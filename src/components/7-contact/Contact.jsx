@@ -10,10 +10,10 @@ const Contact = () => {
     <section className="contact-us" id={"contact-us"}>
       <h1 className="title">
         <span className="icon-envelope"></span>
-        Contact Us
+        Contact Me
       </h1>
       <p className="sub-title">
-        Contact us for more information and Get notified when i publish
+        Contact me for more information and Get notified when i publish
         something new{" "}
       </p>
       <div style={{justifyContent:"space-between",alignItems:"start",flexWrap:"wrap-reverse"}} className="contactSection flex">
