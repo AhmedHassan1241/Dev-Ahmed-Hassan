@@ -1,0 +1,149 @@
+/* =========================
+ table of contents
+============================
+ 
+1. Left Section : Form 
+2. Right Section : Animation 
+3. Media Query
+*/
+
+section.contact-us .icon-envelope {
+  color: var(--subtitle);
+  margin-right: 1rem;
+  font-size: 1.8rem;
+}
+
+section.contact-us .title {
+  font-size: 2.1rem;
+  color: var(--title);
+  margin-bottom: 1rem;
+}
+
+section.contact-us .sub-title {
+  color: var(--subtitle);
+  margin-bottom: 2rem;
+  line-height: 1.65rem;
+}
+/*
+=======================
+1. Left Section : Form
+=======================
+*/
+section.contact-us label {
+  color: var(--subtitle);
+}
+
+section.contact-us #email,
+section.contact-us #message {
+  all: unset;
+  background-color: rgba(63, 63, 70, 0.15);
+  border: 1px solid rgb(63 63 70);
+  width: 16rem;
+  padding: 0.5rem 1rem;
+  margin-left: 1rem;
+  border-radius: 5px;
+  transition: 0.3s;
+  font-size: 1.1rem;
+}
+.light section.contact-us #email,
+.light section.contact-us #message {
+  background-color: rgb(255,255,255,0162);
+  color: black;
+/* box-shadow: 0px 0px 1px var(--bgHover); */
+border: 1px solid rgb(202, 203, 215);
+}
+section.contact-us #email:focus,
+#message:focus {
+  border: 1px solid rgb(45 212 191);
+}
+.light section.contact-us #email:focus,
+#message:focus {
+  border: 1px solid rgb(78 80 80);
+}
+
+section.contact-us #email:hover,
+#message:hover {
+  border: 1px solid rgb(45 212 191);
+box-shadow: 1px 1px 15px 5px var(--bgHover);
+
+}
+
+section.contact-us #message {
+  min-height: 9rem;
+  resize: vertical;
+}
+section.contact-us .submit {
+  background-color: rgba(36, 37, 46, 1);
+  padding: 0.75rem 2rem;
+  text-align: center;
+  font-size: 1.05rem;
+  text-transform: capitalize;
+  border-radius: 5px;
+  transition: 0.3s;
+margin-top: 1.8rem;
+border: 1px solid rgb(63 63 70);
+}
+.emailMessage{
+  font-size: 18px;
+  /* margin-top: 1.7rem; */
+  
+}
+.light .emailMessage{
+  color: black;
+}
+section.contact-us .submit:hover {
+scale: .97;
+color: var(--blue);
+box-shadow: 1px 1px 15px 5px var(--bgHover);
+}
+
+/*
+==============================
+2. Right Section : Animation
+==============================
+*/
+
+
+
+
+
+
+/*
+=======================
+3. Media Query
+=======================
+*/
+
+@media (max-width:886px){
+  .contact-animation{
+    margin-inline: auto;
+  }
+}
+@media (max-width:600px){
+   
+    section.contact-us .animation{
+        display: none;
+    }
+section.contact-us form{
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+} 
+
+section.contact-us form div.flex{
+    flex-direction: column;
+    /* gap: 1rem; */
+    align-items: start;
+}
+section.contact-us #email,
+#message {
+    width: 100%;
+    margin-left: 0;
+    padding:.7rem 0 .7rem 1rem;
+    margin-top: 1rem;
+}
+section.contact-us .submit{
+width: 30%;
+margin-inline: auto;
+}
+}

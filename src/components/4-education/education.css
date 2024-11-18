@@ -1,0 +1,34 @@
+section.education h1.title{
+    font-size: 2.1rem;
+    /* line-height: 3.3rem; */
+    /* margin: 24px 0; */
+    color: var(--title);
+}
+
+section.education .briefcase{
+     font-size: 1.8rem;
+    color: var(--subtitle);
+    margin-right: 1rem;
+}
+section.education .subtitle h3{
+    color: var(--subtitle);
+    margin-left: 1rem;
+    line-height: 3.65rem;
+}
+section.education .subtitle p{
+    color: var(--subtitle);
+    margin-left: 1rem;
+    margin-bottom: 2rem;
+    /* line-height: 3.65rem; */
+}
+section.education .gradated{
+    font-size: 1.4rem;
+   color: var(--subtitle);
+   margin-left: 1rem;
+}
+section.education .grade{
+    font-size: 1.4rem;
+   color: var(--subtitle);
+   margin-right: 1rem;
+
+}

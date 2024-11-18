@@ -1,0 +1,48 @@
+/* =========================
+ table of contents
+============================
+ 
+1. Left Section : Form 
+2. Right Section : Animation 
+3. Media Query
+*/
+
+footer.flex{
+    justify-content: space-between;
+    padding-bottom: 1.9rem;
+}
+footer ul.flex{
+    margin-right: 2rem;
+}
+
+footer.flex ul{
+    gap: 1rem;
+}
+footer.flex ul a{
+    color: var(--subtitle);
+    font-size: 0.9rem;
+    font-weight: 400;
+}
+footer.flex ul a:hover{
+color:var(--blue) ;
+font-size: 1rem;
+font-weight: 500;
+}
+
+footer.flex p{
+color: rgb(113 113 112);
+}
+
+
+@media (max-width:1150px){
+    footer.flex{
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
+
+
+
+
+
+
