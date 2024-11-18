@@ -1,0 +1,3 @@
+export const cardData = [
+    {id:"1",title:"Movie Recommendation App Using React",points:["Implement the basic frontend layout using React for displaying movies, search, and filter options.","Development of main components (e.g., movie cards, search bar), ensure the user interface is responsive using Bootstrap.","Optimize performance by lazy-loading images and code splitting for better loading times.","Implement error handling and validation for user inputs to enhance security and reliability.","Create the basic endpoints in the back-end for fetching movies.","Implement pagination to handle large movie lists and add sorting by popularity, rating, or release date."]}
+]

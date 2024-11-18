@@ -41,7 +41,7 @@ main section.left-section button.active {
   border: 1px solid var(--blue);
 }
 .light main section.left-section button.active {
-border: 1px solid #000;
+  border: 1px solid #000;
 }
 main section.left-section button:hover {
   opacity: 1;
@@ -61,22 +61,21 @@ main section.right-section {
   row-gap: 2rem;
 }
 .card {
-  
   /* border: 1px solid rgba(93, 188,252, .03); */
-  box-shadow:-1px 1px 1px rgba(0, 0, 0, .16),1px 1px 1px rgba(0, 0, 0, .15);
+  box-shadow: -1px 1px 1px rgba(0, 0, 0, 0.16), 1px 1px 1px rgba(0, 0, 0, 0.15);
   border: 1px solid var(--border);
   border-radius: 5px;
   background-image: linear-gradient(
     rgba(255, 255, 255, 0.05),
     rgba(255, 255, 255, 0.05)
-    );
+  );
 }
-.light .card{
-    border: none;
+.light .card {
+  border: none;
 }
 .light .card:hover {
   border: 1px solid var(--bgHover);
-  background-color: rgb(248,248,248);
+  background-color: rgb(248, 248, 248);
 }
 .card:hover {
   border: 1px solid var(--bgHover);
@@ -104,7 +103,7 @@ main section.right-section article.card .box .title {
 }
 main section.right-section article.card .box .subtitle {
   overflow: hidden;
-  height: 6.rem;
+  height: 6rem;
   letter-spacing: normal;
   color: var(--subtitle);
   font-size: 0.8rem;
@@ -112,23 +111,28 @@ main section.right-section article.card .box .subtitle {
   margin-top: 10px;
   /* margin-bottom: 1.1rem; */
   margin-bottom: 10px;
-
 }
 
 main section.right-section article.card .box .icons {
   justify-content: space-between;
 }
-main section.right-section article.card .box .icons .icon-link {
-position: absolute;
-bottom: .8rem;
-left: .8rem;
-}
 main section.right-section article.card .box .icons .icon-github {
   position: absolute;
-  bottom: .8rem;
-  right: .8rem;
-  }
+  bottom: 0.8rem;
+  left: 0.8rem;
+}
 
+main section.right-section article.card .box .icons .icon-link {
+  position: absolute;
+  bottom: 0.8rem;
+  left: 7rem;
+}
+main section.right-section article.card .box .icons .more {
+  position: absolute;
+  bottom: 0.8rem;
+  right: 0.3rem;
+  color: var(--blue);
+}
 
 .card .icon-github,
 .card .icon-link {
@@ -147,6 +151,87 @@ main section.right-section article.card .box .icons .icon-github {
   color: var(--blue);
   font-size: 0.9rem;
   margin-right: 12px;
+}
+
+/*Modal*/
+main button.icon-close {
+  font-size: 1.5rem;
+  color: var(--subtitle);
+  transition: 0.3s;
+}
+
+main button.icon-close:hover {
+  font-size: 1.7rem;
+  color: crimson;
+  rotate: 180deg;
+  transition: 0.5s;
+}
+
+main .fixed {
+  position: fixed;
+  inset: 0; /*= left=0 & right=0 & top=0 & bottom=0 */
+  z-index: 11;
+  background-color: rgba(40, 40, 48, 0.91);
+
+  /* filter: blur(8px); */
+  backdrop-filter: blur(4px);
+}
+
+@keyframes mymove {
+  0% {
+    scale: 0;
+  }
+  50% {
+    scale: 1.2;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+main .fixed ul.modal {
+  animation: mymove 0.7s 1;
+  width: 75%;
+  height: 94%;
+  overflow: auto;
+  margin-inline: auto;
+  margin-top: 2rem;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  background-color: var(--secondary);
+  color: var(--title);
+}
+
+main .fixed ul.modal li.features {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.77rem;
+  margin-left: 1.5rem;
+  padding-top: 0.5rem;
+  font-size: 0.9rem;
+  list-style: disc;
+}
+
+main .fixed ul.modal h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.1rem;
+}
+main .fixed ul.modal .pragraph {
+  padding: 5px 5px 10px 5px;
+  font-size: 1rem;
+  margin-bottom: 1.1rem;
+  line-height: 1.6rem;
+  box-shadow: 0px 1px var(--bgHover);
+}
+
+main .fixed ul.modal li.close {
+  text-align: right;
+  border: none;
+  padding-bottom: 0rem;
+  padding-top: 0.2rem;
+  margin-bottom: -1rem;
+}
+main .fixed ul.modal li:last-child {
+  border: none;
 }
 
 /*
