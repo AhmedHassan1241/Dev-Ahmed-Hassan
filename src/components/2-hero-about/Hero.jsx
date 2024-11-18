@@ -4,7 +4,8 @@ import "./hero.css";
 import { motion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
-
+// @ts-ignore
+import profile from "/public/profile-modified.png"
 const Hero = () => {
   return (
     <section className="hero flex" id={"hero"}>
@@ -14,7 +15,7 @@ const Hero = () => {
             initial={{ transform: "scale(0)" }}
             animate={{ transform: "scale(1.1)" }}
             transition={{ damping: 6, type: "spring", stiffness: 100 }}
-            src="/assets/profile-modified.png"
+            src={profile}
             className="avatar"
             alt=""
           />
