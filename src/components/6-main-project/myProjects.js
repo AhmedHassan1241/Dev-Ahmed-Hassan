@@ -9,7 +9,8 @@ import EcommerceNodejs from "../../../public/E-commerce API with Node js.png"
 // @ts-ignore
 import TimePrayer from "../../../public/TimePrayer.png";
 
-import img4 from "../../../public/4.jpg";
+// @ts-ignore
+import socialApp from "../../../public/socialApp.png";
 export const myProjects = [
   {
     id: 1,
@@ -107,15 +108,15 @@ export const myProjects = [
   {
     id: 6,
     projectTitle: "Social App",
-    category: ["node&express"],
-    img: img4,
-    keyFeatures: [],
+    category: ["html & css","java script"],
+    img: socialApp,
+    keyFeatures: ["User Authentication: Allows users to log in and manage their sessions securely.","Post Management: Users can add, edit, and delete posts dynamically.","Commenting System: Enables users to add comments to posts, fostering interaction.","API Integration: Utilizes Tarmeez Academy's API for real-time data handling and operations."],
     pragraph:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium ipsam nostrum fugit maxime ipsa aut ducimus doloremque.",
-    Technologies: [],
-    purpose: [],
+"Social-App is an engaging social media application featuring interactive functionalities for user-generated content management and interaction. The project emphasizes the integration of third-party APIs to deliver a realistic application experience.",    
+Technologies: ["HTML: For structuring the application.","CSS: Ensures responsive and visually consistent design.","JavaScript: Handles logic and dynamic functionalities.","Tarmeez Academy API: Powers data interaction for a dynamic user experience."],
+    purpose: ["To demonstrate advanced front-end development skills.","To practice building interactive user experiences with third-party API integration.","To create a functional application showcasing user authentication and CRUD operations."],
     demoLink: "",
-    gitHubLink: "",
+    gitHubLink: "https://github.com/AhmedHassan1241/Social-App",
   },
 ];
 
