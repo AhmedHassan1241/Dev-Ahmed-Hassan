@@ -5,8 +5,10 @@ import basicEcommerce from "../../../public/Basic-E-commerce.png";
 // @ts-ignore
 import EcommercewithReactJs from "../../../public/E-commerce with React js.png";
 // @ts-ignore
-import img3 from "../../../public/3.jpg";
+import EcommerceNodejs from "../../../public/E-commerce API with Node js.png"
 // @ts-ignore
+import TimePrayer from "../../../public/TimePrayer.png";
+
 import img4 from "../../../public/4.jpg";
 export const myProjects = [
   {
@@ -38,7 +40,7 @@ export const myProjects = [
   {
     id: 2,
     projectTitle: "Basic-E-commerce",
-    category: ["react"],
+    category: ["react","html & css"],
     img: basicEcommerce,
     keyFeatures: [
       "Product Management: Add, view, update, and delete products.",
@@ -62,7 +64,7 @@ export const myProjects = [
   {
     id: 3,
     projectTitle: "E-commerce with React js",
-    category: ["react"],
+    category: ["react","html & css"],
     img: EcommercewithReactJs,
     keyFeatures: ["Product Management: Easily add, view, update, and delete products.",
     "Category Management: Create, modify, and delete categories, offering users a structured way to organize products.",
@@ -79,28 +81,28 @@ export const myProjects = [
   {
     id: 4,
     projectTitle: "E-commerce API with Node js",
-    category: ["js", "html&css"],
-    img: img3,
-    keyFeatures: [],
+    category: ["node & express"],
+    img: EcommerceNodejs,
+    keyFeatures: ["Product Management: Perform CRUD operations (Create, Read, Update, Delete) for products.","Category Management: Organize products into categories with full CRUD functionality.","RESTful APIs: Provides structured APIs for seamless front-end integration."],
     pragraph:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium ipsam nostrum fugit maxime ipsa aut ducimus doloremque.",
-    Technologies: [],
-    purpose: [],
+"A foundational back-end project developed with Node.js, demonstrating the essential functionalities required to manage an e-commerce platform effectively.",
+    Technologies: ["Back-End: Built with Node.js and Express.js to create a fast, scalable server and RESTful APIs.","Database:Integrated with a database for persistent data management."],
+    purpose: ["Learning Node.js and Express.js: Gain hands-on experience in back-end development.","Foundation for Full-Stack Integration: Serves as the back-end for future full-stack projects.","API Development Practice: Build robust APIs for managing e-commerce functionalities."],
     demoLink: "",
-    gitHubLink: "",
+    gitHubLink: "https://github.com/AhmedHassan1241/Node-Ecommerce",
   },
   {
     id: 5,
     projectTitle: "Time Prayer",
-    category: ["node&express"],
-    img: img4,
-    keyFeatures: [],
+    category: ["html & css","java script"],
+    img: TimePrayer,
+    keyFeatures: ["Prayer Time Display: Shows the accurate prayer times for the user's location.","Dynamic Location Fetching: Automatically detects the user's location to provide the correct prayer times.","Responsive Design: Optimized for various devices (mobile, tablet, desktop).","Real-time Data: Prayer times are fetched in real-time from an external API.","User-Friendly Interface: A clean, minimalistic interface to ensure easy access to prayer times."],
     pragraph:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laudantium ipsam nostrum fugit maxime ipsa aut ducimus doloremque.",
-    Technologies: [],
-    purpose: [],
-    demoLink: "",
-    gitHubLink: "",
+     "Time-Prayer is a web-based application designed to display accurate prayer times based on the user's location. It provides a simple and easy-to-use interface for Muslims to check the daily prayer times and stay connected with their faith. The app fetches prayer time data through a third-party API to ensure that the information is updated in real-time.",
+    Technologies: ["Front-End: HTML, CSS, and JavaScript for building a dynamic and responsive user interface that works across devices.","Back-End: Uses a third-party API to fetch prayer time data"],
+    purpose: ["Provide Accurate Prayer Times: Serve as a tool for Muslims to track prayer times accurately based on their geographical location.","Responsive Design: Learn and implement responsive design principles to ensure the app is accessible on any device.","Integration with External APIs: Practice integrating third-party APIs for real-time data fetching."],
+    gitHubLink: "https://github.com/AhmedHassan1241/Time-Prayer",
+    demoLink: "https://time-prayer-seven.vercel.app",
   },
   {
     id: 6,
@@ -116,3 +118,5 @@ export const myProjects = [
     gitHubLink: "",
   },
 ];
+
+export const categoryData= ["all", "html & css", "java script", "react", "node & express", "fullstack"]

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./main.css";
-import { myProjects } from "./myProjects";
+import { categoryData, myProjects } from "./myProjects";
 import { AnimatePresence, motion } from "framer-motion";
 
 function Main() {
@@ -20,7 +20,7 @@ function Main() {
   return (
     <main className="flex" id={"projects"}>
       <section className="flex left-section">
-        {["all", "html&css", "js", "react", "node&express", "fullstack"].map(
+        {categoryData.map(
           (category) => (
             <button
               key={category}

@@ -103,7 +103,7 @@ main section.right-section article.card .box .title {
 }
 main section.right-section article.card .box .subtitle {
   overflow: hidden;
-  height: 6rem;
+  height: 5.7rem;
   letter-spacing: normal;
   color: var(--subtitle);
   font-size: 0.8rem;
