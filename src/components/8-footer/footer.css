@@ -12,6 +12,7 @@ footer.flex{
     padding-bottom: 1.9rem;
 }
 footer ul.flex{
+    flex-wrap: wrap;
     margin-right: 2rem;
 }
 
@@ -38,6 +39,12 @@ color: rgb(113 113 112);
     footer.flex{
         flex-direction: column;
         gap: 2rem;
+    }
+}
+
+@media (max-width:538px){
+    footer ul.flex{
+    margin-inline: auto;
     }
 }
 
