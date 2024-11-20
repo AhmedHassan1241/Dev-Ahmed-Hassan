@@ -48,6 +48,7 @@ function Main() {
                 width={266}
                 src={item.img}
                 alt={`${item.projectTitle} preview`}
+                loading="lazy"
               />
               <div style={{ width: "266px" }} className="box">
                 <h1 className="title">{item.projectTitle}</h1>
