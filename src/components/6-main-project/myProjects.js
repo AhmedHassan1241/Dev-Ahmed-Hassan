@@ -15,7 +15,7 @@ export const myProjects = [
   {
     id: 1,
     projectTitle: "Movie Recommendation App",
-    category: ["fullstack", "react", "node&express"],
+    category: ["fullstack", "react", "node&express","bootstarp"],
     img: movieApp,
     keyFeatures: [
       "Custom API Integration: Utilizes a custom-built API to fetch movie data.",
@@ -41,7 +41,7 @@ export const myProjects = [
   {
     id: 2,
     projectTitle: "Basic-E-commerce",
-    category: ["react","html & css"],
+    category: ["react","bootstarp"],
     img: basicEcommerce,
     keyFeatures: [
       "Product Management: Add, view, update, and delete products.",
@@ -65,7 +65,7 @@ export const myProjects = [
   {
     id: 3,
     projectTitle: "E-commerce with React js",
-    category: ["react","html & css"],
+    category: ["react","bootstarp"],
     img: EcommercewithReactJs,
     keyFeatures: ["Product Management: Easily add, view, update, and delete products.",
     "Category Management: Create, modify, and delete categories, offering users a structured way to organize products.",
@@ -108,7 +108,7 @@ export const myProjects = [
   {
     id: 6,
     projectTitle: "Social App",
-    category: ["html & css","java script"],
+    category: ["html & css","bootstarp","java script"],
     img: socialApp,
     keyFeatures: ["User Authentication: Allows users to log in and manage their sessions securely.","Post Management: Users can add, edit, and delete posts dynamically.","Commenting System: Enables users to add comments to posts, fostering interaction.","API Integration: Utilizes Tarmeez Academy's API for real-time data handling and operations."],
     pragraph:
@@ -120,4 +120,4 @@ Technologies: ["HTML: For structuring the application.","CSS: Ensures responsive
   },
 ];
 
-export const categoryData= ["all", "html & css", "java script", "react", "node & express", "fullstack"]
+export const categoryData= ["all", "html & css","bootstarp", "java script", "react", "node & express", "fullstack"]
