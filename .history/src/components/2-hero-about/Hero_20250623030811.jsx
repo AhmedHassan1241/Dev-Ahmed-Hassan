@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 // @ts-ignore
-import profile from "/public/profile-modified.png";
+import profile from "/public/profile-modified.png"
 const Hero = () => {
   return (
     <section className="hero flex" id={"hero"}>
@@ -60,7 +60,7 @@ const Hero = () => {
             </div>
           </a>
           <a
-            href="https://drive.google.com/uc?export=download&id=1sJXBHJCDS0rUeVVnhtkIyz33-6HbQObW"
+  href="https://drive.google.com/uc?export=download&id=1sJXBHJCDS0rUeVVnhtkIyz33-6HbQObW" 
             target="_blank"
           >
             <div
