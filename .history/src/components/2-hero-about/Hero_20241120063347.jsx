@@ -60,7 +60,7 @@ const Hero = () => {
             </div>
           </a>
           <a
-            href="https://drive.google.com/file/d/1sJXBHJCDS0rUeVVnhtkIyz33-6HbQObW/view"
+            href="https://drive.google.com/file/d/1BId4quQKGRYGbv8BWDwWRVUAI_NBeI5k/view"
             target="_blank"
           >
             <div
