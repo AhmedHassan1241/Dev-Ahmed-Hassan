@@ -29,6 +29,6 @@ export const skillsData=[
     {id:"10",icon:TbBrandLaravel,name:"Laravel"},
     {id:"11",icon:DiNodejs,name:"Node Js"},
     {id:"12",icon:SiExpress,name:"Express"},
-    {id:"13",icon:SiMongodb,name:"MongoDB"}
+    {id:"10",icon:SiMongodb,name:"MongoDB"}
 
 ]

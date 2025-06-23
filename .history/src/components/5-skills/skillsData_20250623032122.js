@@ -26,9 +26,9 @@ export const skillsData=[
     {id:"7",icon:GrReactjs,name:"React Js"},
     {id:"8",icon:SiPhp,name:"PHP"},
     {id:"9",icon:SiMysql,name:"MySQL"},
-    {id:"10",icon:TbBrandLaravel,name:"Laravel"},
-    {id:"11",icon:DiNodejs,name:"Node Js"},
-    {id:"12",icon:SiExpress,name:"Express"},
-    {id:"13",icon:SiMongodb,name:"MongoDB"}
+    {id:"9",icon:TbBrandLaravel,name:"Lara"},
+    {id:"8",icon:DiNodejs,name:"Node Js"},
+    {id:"9",icon:SiExpress,name:"Express"},
+    {id:"10",icon:SiMongodb,name:"MongoDB"}
 
 ]

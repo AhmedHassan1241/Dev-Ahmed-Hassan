@@ -28,7 +28,7 @@ const Hero = () => {
           transition={{ duration: 2 }}
           className="title"
         >
-          Full-Stack Developer
+          Full Developer
         </motion.h1>
         <p className="subtitle">
           Hi, I’m Ahmed Hassan , an aspiring React Front-End Developer actively
