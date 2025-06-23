@@ -24,11 +24,11 @@ export const skillsData=[
     {id:"5",icon:TbBrandTypescript,name:"TypeScript"},
     {id:"6",icon:FaGitAlt,name:"Git"},
     {id:"7",icon:GrReactjs,name:"React Js"},
-    {id:"8",icon:DiNodejs,name:"Node Js"},
-    {id:"9",icon:SiExpress,name:"Express"},
-    {id:"10",icon:SiMongodb,name:"MongoDB"}
-    {id:"11",icon:SiPhp,name:"PHP"},
-    {id:"12",icon:SiMysql,name:"MySQL"},
-    {id:"13",icon:TbBrandLaravel,name:"Laravel"},
+    {id:"11",icon:DiNodejs,name:"Node Js"},
+    {id:"12",icon:SiExpress,name:"Express"},
+    {id:"13",icon:SiMongodb,name:"MongoDB"}
+    {id:"8",icon:SiPhp,name:"PHP"},
+    {id:"9",icon:SiMysql,name:"MySQL"},
+    {id:"10",icon:TbBrandLaravel,name:"Laravel"},
 
 ]
