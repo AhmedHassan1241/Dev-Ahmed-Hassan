@@ -40,7 +40,7 @@ Later, I developed basic experience with Node.js and Express, which gave me valu
 
 🎯 Currently Focused On:
 Specializing in Laravel (Back-End) — building scalable RESTful APIs, applying clean architecture principles, and managing relational databases like MySQL.
-{/* 
+
 ✨ I’m passionate about:
 Writing clean, maintainable code
 Solving real-world business problems
@@ -80,7 +80,7 @@ Full-Stack opportunities where Laravel is the core
 🌱 Let’s Connect!
 
 I'm eager to grow, learn from experienced developers, and contribute to exciting projects.
-If you're hiring, mentoring, or looking to collaborate — feel free to reach out! */}
+If you're hiring, mentoring, or looking to collaborate — feel free to reach out!
         </p>
 
         <div className="all-icons flex">
