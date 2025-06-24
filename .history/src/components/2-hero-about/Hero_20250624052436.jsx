@@ -31,14 +31,14 @@ const Hero = () => {
           Full-Stack Developer
         </motion.h1>
         <p className="subtitle">
-          👋 Hi, I’m Ahmed Hassan — Full-Stack Web Developer (Laravel + React)<br/>
-I’ve successfully completed the Digital Egypt Pioneers Initiative (DEPI) 🌟 — a national program focused on empowering youth in software development.<br/>
+          👋 Hi, I’m Ahmed Hassan — Full-Stack Web Developer (Laravel + React)<br></br>
+I’ve successfully completed the Digital Egypt Pioneers Initiative (DEPI) 🌟 — a national program focused on empowering youth in software development.
 
-I began my journey with React.js for front-end development, gaining hands-on experience building dynamic UIs and working on real-world projects.<br/>
+I began my journey with React.js for front-end development, gaining hands-on experience building dynamic UIs and working on real-world projects.
 
-Later, I developed basic experience with Node.js and Express, which gave me valuable insight into backend APIs and full-stack development.<br/>
+Later, I developed basic experience with Node.js and Express, which gave me valuable insight into backend APIs and full-stack development.
 
-🎯 Currently Focused On:<br/>
+🎯 Currently Focused On:
 Specializing in Laravel (Back-End) — building scalable RESTful APIs, applying clean architecture principles, and managing relational databases like MySQL.
 {
 /* 

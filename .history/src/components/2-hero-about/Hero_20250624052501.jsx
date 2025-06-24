@@ -38,7 +38,7 @@ I began my journey with React.js for front-end development, gaining hands-on exp
 
 Later, I developed basic experience with Node.js and Express, which gave me valuable insight into backend APIs and full-stack development.<br/>
 
-🎯 Currently Focused On:<br/>
+🎯 Currently Focused On:
 Specializing in Laravel (Back-End) — building scalable RESTful APIs, applying clean architecture principles, and managing relational databases like MySQL.
 {
 /* 
