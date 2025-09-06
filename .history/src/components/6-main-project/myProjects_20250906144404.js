@@ -124,7 +124,7 @@ Technologies: [
     gitHubLink: "https://github.com/AhmedHassan1241/Node-Ecommerce",
   },
   {
-    id: 6,
+    id: 5,
     projectTitle: "Time Prayer",
     category: ["html & css","java script"],
     img: TimePrayer,
@@ -137,7 +137,7 @@ Technologies: [
     demoLink: "https://time-prayer-seven.vercel.app",
   },
   {
-    id: 7,
+    id: 6,
     projectTitle: "Social App",
     category: ["html & css","bootstarp","java script"],
     img: socialApp,

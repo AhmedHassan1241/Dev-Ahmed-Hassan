@@ -137,7 +137,7 @@ Technologies: [
     demoLink: "https://time-prayer-seven.vercel.app",
   },
   {
-    id: 7,
+    id: 6,
     projectTitle: "Social App",
     category: ["html & css","bootstarp","java script"],
     img: socialApp,

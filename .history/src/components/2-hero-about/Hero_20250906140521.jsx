@@ -36,7 +36,8 @@ const Hero = () => {
 Passionate about clean code, scalable solutions, and continuous learning..<br/>
 
 🎯 Currently Focused On:<br/>
- 🐘 Laravel & PHP — building RESTful APIs, applying clean architecture, and working with 🗄 MySQL.{
+Specializing in Laravel (Back-End) — building scalable RESTful APIs, applying clean architecture principles, and managing relational databases like MySQL.
+{
 /* 
 ✨ I’m passionate about:
 Writing clean, maintainable code

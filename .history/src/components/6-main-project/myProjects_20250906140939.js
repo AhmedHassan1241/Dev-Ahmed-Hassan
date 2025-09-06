@@ -11,9 +11,6 @@ import TimePrayer from "../../../public/TimePrayer.png";
 
 // @ts-ignore
 import socialApp from "../../../public/socialApp.png";
-// @ts-ignore
-import reactApp from "../../../public/reactApp.png";
-
 export const myProjects = [
   {
     id: 1,
@@ -43,34 +40,6 @@ export const myProjects = [
   },
   {
     id: 2,
-    projectTitle: "E-commerce Using React+Vite",
-    category: ["html & css","bootstarp","java script",'react'],
-    img: reactApp,
-    keyFeatures: ["Product Catalog: Browse products with dynamic filtering and search.",
-      "Cart & Order Management: Add products to cart, manage quantities, and place orders.",
-      "User Authentication: Secure login and session management using Redux Persist.",
-      "Payment Integration: Supports Stripe and PayPal for seamless checkout.",
-      "Modern UI: Built with Material-UI and Bootstrap for a responsive, attractive interface."
-],
-    pragraph:
-      "Developed a responsive e-commerce web app using React, Redux, and Vite. Features include a product catalog, cart and order management, secure user authentication, and real-time payment integration with Stripe and PayPal. The UI leverages Material-UI and Bootstrap for a modern look and feel.",
-Technologies: [
-   "React: For building interactive user interfaces.",
-      "Redux & Redux Persist: State management and persistent authentication.",
-      "Vite: Fast development and build tool.",
-      "Material-UI & Bootstrap: For responsive and consistent design.",
-      "Stripe & PayPal: Integrated payment gateways."
-    ],
-    purpose: [
-       "Showcase advanced front-end and state management skills.",
-      "Practice integrating third-party payment APIs.",
-      "Build a full-featured e-commerce application with modern technologies."
- ],
-    demoLink: "https://e-commerce-real.vercel.app/",
-    gitHubLink: "https://github.com/AhmedHassan1241/E-commerce-Real",
-  },
-  {
-    id: 3,
     projectTitle: "Basic-E-commerce",
     category: ["react","bootstarp"],
     img: basicEcommerce,
@@ -94,7 +63,7 @@ Technologies: [
     gitHubLink: "https://github.com/AhmedHassan1241/Basic-E-commerce",
   },
   {
-    id: 4,
+    id: 3,
     projectTitle: "E-commerce with React js",
     category: ["react","bootstarp"],
     img: EcommercewithReactJs,
@@ -111,7 +80,7 @@ Technologies: [
     gitHubLink: "https://github.com/AhmedHassan1241/Basic-E-commerce-CRUD",
   },
   {
-    id: 5,
+    id: 4,
     projectTitle: "E-commerce API with Node js",
     category: ["node & express"],
     img: EcommerceNodejs,
@@ -124,7 +93,7 @@ Technologies: [
     gitHubLink: "https://github.com/AhmedHassan1241/Node-Ecommerce",
   },
   {
-    id: 6,
+    id: 5,
     projectTitle: "Time Prayer",
     category: ["html & css","java script"],
     img: TimePrayer,
@@ -137,7 +106,7 @@ Technologies: [
     demoLink: "https://time-prayer-seven.vercel.app",
   },
   {
-    id: 7,
+    id: 6,
     projectTitle: "Social App",
     category: ["html & css","bootstarp","java script"],
     img: socialApp,
