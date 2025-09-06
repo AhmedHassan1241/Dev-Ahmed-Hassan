@@ -103,7 +103,7 @@ If you're hiring, mentoring, or looking to collaborate — feel free to reach ou
             </div>
           </a>
           <a
-            href="https://drive.google.com/uc?export=download&id=1sJXBHJCDS0rUeVVnhtkIyz33-6HbQObW"
+            href="https://drive.google.com/file/d/11kvBAOUi7gb53t-jTK6njGZ_sk1mRxKC/view?usp=sharing"
             target="_blank"
           >
             <div
