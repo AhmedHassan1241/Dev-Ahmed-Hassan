@@ -61,11 +61,6 @@ function ProjectCard({ project, i }: { project: (typeof projects)[0]; i: number 
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#050d1a]/90 via-[#050d1a]/20 to-transparent" />
 
-        {project.featured && (
-          <div className="absolute top-3 left-3 px-2.5 py-1 rounded-md bg-laravel text-white text-xs font-bold shadow-[0_0_12px_rgba(6,182,212,0.5)] tracking-wide">
-            Featured
-          </div>
-        )}
       </div>
 
       {/* Content */}
