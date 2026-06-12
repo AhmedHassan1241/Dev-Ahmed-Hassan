@@ -521,7 +521,7 @@ export default function Projects() {
         ScrollTrigger.create({
           trigger: pin,
           pin: true,
-          start: "top 15%",
+          start: "top 20%",
           end: `+=${(n - 1) * 620}`,
           scrub: 1.5,
           animation: tl,
