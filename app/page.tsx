@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import SmoothScroll from "@/components/SmoothScroll";
 
 // Decoration — no SSR needed, loads after hydration
 const FloatingTechIcons = dynamic(() => import("@/components/FloatingTechIcons"), { ssr: false });
@@ -20,6 +21,7 @@ const Footer     = dynamic(() => import("@/components/Footer"));
 export default function Home() {
   return (
     <>
+      <SmoothScroll />
       <AnimatedBackground />
       <FloatingTechIcons />
       <MouseGlow />
