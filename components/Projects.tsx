@@ -10,8 +10,8 @@ import { projects, categoryFilters } from "@/data/projects";
 import SectionHeading from "./SectionHeading";
 
 // Portfolio brand: cyan = primary (PHP/backend), purple = secondary (frontend/JS)
-const CYAN   = { hex: "#06B6D4", glow: "rgba(6,182,212,0.32)"   };
-const PURPLE = { hex: "#8B5CF6", glow: "rgba(139,92,246,0.32)"  };
+const CYAN   = { hex: "#22D3EE", glow: "rgba(34,211,238,0.45)"   };
+const PURPLE = { hex: "#A78BFA", glow: "rgba(167,139,250,0.45)"  };
 
 const ACCENTS: Record<string, { hex: string; glow: string }> = {
   php:        CYAN,
@@ -45,13 +45,13 @@ function StackCard({
     <div
       className="h-full relative flex overflow-hidden"
       style={{
-        background: "rgba(255,255,255,0.058)",
+        background: "#0A1628",
         backdropFilter: "blur(24px) saturate(160%)",
         WebkitBackdropFilter: "blur(24px) saturate(160%)",
-        border: "1px solid rgba(255,255,255,0.12)",
+        border: "1px solid rgba(34,211,238,0.15)",
         borderRadius: "16px",
         boxShadow:
-          "0 16px 48px rgba(0,0,0,0.45), 0 0 0 0.5px rgba(255,255,255,0.06) inset",
+          "0 16px 48px rgba(0,0,0,0.50), 0 0 0 1px rgba(34,211,238,0.06) inset",
       }}
     >
       {/* Accent top bar */}
@@ -59,37 +59,36 @@ function StackCard({
         className="absolute top-0 inset-x-0 h-[2px] z-30 pointer-events-none"
         style={{
           background: `linear-gradient(90deg, transparent 5%, ${a.hex} 30%, ${a.hex} 70%, transparent 95%)`,
-          boxShadow: `0 0 18px ${a.glow}`,
+          boxShadow: `0 0 24px ${a.glow}`,
         }}
       />
 
       {/* ── Image panel (left 46%) ── */}
-      <div className="relative w-[46%] shrink-0 overflow-hidden bg-[#070f1e]">
+      <div className="relative w-[55%] shrink-0 overflow-hidden bg-[#070f1e]">
         <Image
           src={project.image}
           alt={project.title}
           fill
           className="object-cover transition-transform duration-[1.2s] ease-out scale-[1.02] group-hover:scale-[1.06]"
         />
+        {/* Edge gradient → content area - reduced opacity */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#0A1628]/70" />
+        {/* Bottom gradient - reduced opacity */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
 
-        {/* Edge gradient → content area */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/10 via-transparent to-[#050d1a]/92" />
-        {/* Bottom gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-
-        {/* Category label — top left */}
+        {/* Category label — top left (darker for better contrast) */}
         <div
           className="absolute top-5 left-5 flex items-center gap-1.5 px-3 py-1 rounded-full text-[10px] font-bold tracking-[0.18em] uppercase"
           style={{
-            color: a.hex,
-            background: `${a.hex}18`,
-            border: `1px solid ${a.hex}35`,
-            backdropFilter: "blur(8px)",
+            color: "#E6FBFF",
+            background: "rgba(2,6,23,0.78)",
+            border: "1px solid rgba(34,211,238,0.28)",
+            backdropFilter: "blur(6px)",
           }}
         >
           <span
             className="w-1 h-1 rounded-full"
-            style={{ background: a.hex }}
+            style={{ background: "#22D3EE" }}
           />
           {project.categories[0]}
         </div>
@@ -97,20 +96,20 @@ function StackCard({
         {/* Big index — bottom right of image */}
         <div
           className="absolute bottom-4 right-5 font-black leading-none select-none"
-          style={{ fontSize: "4.5rem", color: "rgba(255,255,255,0.05)" }}
+          style={{ fontSize: "4.5rem", color: "rgba(255,255,255,0.03)" }}
         >
           {String(index + 1).padStart(2, "0")}
         </div>
       </div>
 
       {/* ── Content panel (right) ── */}
-      <div className="flex flex-col flex-1 px-9 py-8 xl:px-11 xl:py-10 relative z-20 justify-between min-w-0">
+      <div className="flex flex-col flex-1 px-6 py-6 xl:px-8 xl:py-8 relative z-20 justify-between min-w-0">
         {/* Header */}
         <div>
           <div className="flex items-center justify-between mb-6">
             <span
               className="font-mono text-[11px] font-bold tracking-[0.24em]"
-              style={{ color: `${a.hex}bb` }}
+              style={{ color: "#22D3EE" }}
             >
               {String(index + 1).padStart(2, "0")}&nbsp;/&nbsp;
               {String(total).padStart(2, "0")}
@@ -123,7 +122,7 @@ function StackCard({
                   key={c}
                   className="text-[10px] px-2 py-0.5 rounded font-semibold"
                   style={{
-                    color: "rgba(148,163,184,0.7)",
+                    color: "#94A3B8",
                     background: "rgba(255,255,255,0.05)",
                     border: "1px solid rgba(255,255,255,0.08)",
                   }}
@@ -144,7 +143,7 @@ function StackCard({
 
           {/* Description */}
           <p
-            className="text-slate-400 leading-relaxed"
+            className="text-[#94A3B8] leading-relaxed"
             style={{ fontSize: "13.5px" }}
           >
             {project.description}
@@ -155,34 +154,24 @@ function StackCard({
         <div>
           {/* Tech tags */}
           <div className="flex flex-wrap gap-1.5 mb-5 mt-5">
-            {project.technologies.slice(0, 5).map((tech) => (
+            {project.technologies.map((tech) => (
               <span
                 key={tech}
                 className="px-2.5 py-[3px] text-[11px] font-semibold rounded-md cursor-default"
                 style={{
-                  color: a.hex,
-                  background: `${a.hex}13`,
-                  border: `1px solid ${a.hex}30`,
+                  color: "#E6FBFF",
+                  background: "linear-gradient(180deg, rgba(34,211,238,0.16), rgba(34,211,238,0.10))",
+                  border: "1px solid rgba(34,211,238,0.30)",
+                  boxShadow: "0 2px 10px rgba(34,211,238,0.08)",
                 }}
               >
                 {tech}
               </span>
             ))}
-            {project.technologies.length > 5 && (
-              <span
-                className="px-2.5 py-[3px] text-[11px] font-medium rounded-md"
-                style={{
-                  color: "rgba(148,163,184,0.5)",
-                  border: "1px solid rgba(255,255,255,0.07)",
-                }}
-              >
-                +{project.technologies.length - 5}
-              </span>
-            )}
           </div>
 
           {/* Divider */}
-          <div className="h-px bg-white/[0.06] mb-4" />
+          <div className="h-px bg-[#1E293B] mb-4" />
 
           {/* Links */}
           <div className="flex items-center gap-3">
@@ -191,10 +180,10 @@ function StackCard({
                 href={project.githubLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 px-4 py-2 rounded-lg text-[13px] font-medium text-slate-400 transition-all duration-200"
+                className="flex items-center gap-2 px-4 py-2 rounded-lg text-[13px] font-medium text-[#94A3B8] transition-all duration-200"
                 style={{
-                  background: "rgba(255,255,255,0.04)",
-                  border: "1px solid rgba(255,255,255,0.08)",
+                  background: "rgba(255,255,255,0.06)",
+                  border: "1px solid rgba(255,255,255,0.14)",
                 }}
                 onMouseEnter={(e) => {
                   const el = e.currentTarget as HTMLElement;
@@ -205,7 +194,7 @@ function StackCard({
                 onMouseLeave={(e) => {
                   const el = e.currentTarget as HTMLElement;
                   el.style.background = "rgba(255,255,255,0.04)";
-                  el.style.color = "";
+                  el.style.color = "#94A3B8";
                   el.style.borderColor = "rgba(255,255,255,0.08)";
                 }}
               >
@@ -221,15 +210,17 @@ function StackCard({
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-5 py-2 rounded-lg text-[13px] font-semibold text-white transition-all duration-200 group/link"
                 style={{
-                  background: "linear-gradient(135deg, #06B6D4cc, #8B5CF6aa)",
-                  border: "1px solid rgba(6,182,212,0.35)",
-                  boxShadow: "0 0 18px rgba(6,182,212,0.28)",
+                  background: "#22D3EE",
+                  border: "1px solid rgba(34,211,238,0.40)",
+                  boxShadow: "0 0 20px rgba(34,211,238,0.30), 0 4px 12px rgba(0,0,0,0.3)",
                 }}
                 onMouseEnter={(e) => {
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 0 32px rgba(6,182,212,0.45)";
+                  (e.currentTarget as HTMLElement).style.background = "#38E4FD";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 0 32px rgba(34,211,238,0.45)";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 0 18px rgba(6,182,212,0.28)";
+                  (e.currentTarget as HTMLElement).style.background = "#22D3EE";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "0 0 20px rgba(34,211,238,0.30), 0 4px 12px rgba(0,0,0,0.3)";
                 }}
               >
                 Live Demo
@@ -244,7 +235,7 @@ function StackCard({
               <a
                 href="#contact"
                 className="text-sm font-medium flex items-center gap-1.5 group/c"
-                style={{ color: a.hex }}
+                style={{ color: "#22D3EE" }}
               >
                 Contact for Details
                 <FaArrowRight
@@ -298,8 +289,16 @@ function WideCard({ project }: { project: (typeof projects)[0] }) {
     >
       <div
         ref={tiltRef}
-        style={{ transition: "transform 0.18s ease-out, box-shadow 0.3s ease", willChange: "transform" }}
-        className="glass-card overflow-hidden group relative h-full"
+        className="overflow-hidden group relative h-full"
+        style={{
+          transition: "transform 0.18s ease-out, box-shadow 0.3s ease",
+          willChange: "transform",
+          background: "#0A1628",
+          backdropFilter: "blur(20px) saturate(140%)",
+          border: "1px solid rgba(34,211,238,0.15)",
+          borderRadius: "16px",
+          boxShadow: `0 12px 40px rgba(0,0,0,0.45), 0 0 0 1px ${a.hex}15`,
+        }}
       >
         <div className="absolute top-0 inset-x-0 h-[2px] z-30 pointer-events-none"
           style={{ background: `linear-gradient(90deg, transparent, ${a.hex} 30%, ${a.hex} 70%, transparent)`, boxShadow: `0 0 14px ${a.glow}`, opacity: 0.9 }} />
@@ -307,34 +306,34 @@ function WideCard({ project }: { project: (typeof projects)[0] }) {
         <div className="flex flex-col md:flex-row h-full min-h-[280px]">
           <div className="relative md:w-[48%] h-64 md:h-auto overflow-hidden bg-[#0a1628] shrink-0">
             <Image src={project.image} alt={project.title} fill className="object-cover group-hover:scale-[1.04] transition-transform duration-700 ease-out" />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#050d1a]/80 hidden md:block" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#050d1a]/90 via-[#050d1a]/20 to-transparent md:hidden" />
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-[#0A1628]/60 hidden md:block" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/70 via-[#0A1628]/10 to-transparent md:hidden" />
           </div>
           <div className="flex flex-col flex-1 p-6 lg:p-8 z-20 relative">
             <h3 className="text-2xl font-bold text-white mb-3 leading-tight">{project.title}</h3>
-            <p className="text-slate-300 text-sm leading-relaxed flex-1 mb-5">{project.description}</p>
+            <p className="text-[#94A3B8] text-sm leading-relaxed flex-1 mb-5">{project.description}</p>
             <div className="flex flex-wrap gap-2 mb-6">
               {project.technologies.map((tech) => (
                 <span key={tech} className="px-3 py-1 text-xs font-semibold rounded-lg cursor-default"
-                  style={{ color: a.hex, background: `${a.hex}15`, border: `1px solid ${a.hex}38` }}>{tech}</span>
+                  style={{ color: "#E6FBFF", background: "linear-gradient(180deg, rgba(34,211,238,0.16), rgba(34,211,238,0.10))", border: "1px solid rgba(34,211,238,0.30)" }}>{tech}</span>
               ))}
             </div>
-            <div className="flex items-center gap-3 pt-4 border-t border-white/[0.07]">
+            <div className="flex items-center gap-3 pt-4 border-t border-[#1E293B]">
               {project.githubLink && (
                 <a href={project.githubLink} target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-slate-300 bg-white/[0.05] border border-white/[0.09] hover:bg-white/[0.09] hover:text-white hover:border-white/15 transition-all duration-200">
+                  className="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium text-[#94A3B8] bg-white/[0.05] border border-white/[0.09] hover:bg-white/[0.09] hover:text-white hover:border-white/15 transition-all duration-200">
                   <FaGithub size={14} /> Code
                 </a>
               )}
               {project.demoLink && (
                 <a href={project.demoLink} target="_blank" rel="noopener noreferrer"
                   className="ml-auto flex items-center gap-2 px-5 py-2 rounded-lg text-sm font-semibold text-white transition-all duration-200"
-                  style={{ background: "linear-gradient(135deg, #06B6D4cc, #8B5CF6aa)", border: "1px solid rgba(6,182,212,0.35)", boxShadow: "0 0 20px rgba(6,182,212,0.28)" }}>
+                  style={{ background: "#22D3EE", border: "1px solid rgba(34,211,238,0.35)", boxShadow: "0 0 20px rgba(34,211,238,0.30)" }}>
                   Live Demo <FaExternalLinkAlt size={10} />
                 </a>
               )}
               {!project.githubLink && !project.demoLink && (
-                <a href="#contact" className="text-sm font-medium" style={{ color: a.hex }}>Contact for Details</a>
+                <a href="#contact" className="text-sm font-medium" style={{ color: "#22D3EE" }}>Contact for Details</a>
               )}
             </div>
           </div>
@@ -379,42 +378,52 @@ function RegularCard({ project }: { project: (typeof projects)[0] }) {
       onMouseEnter={onEnter}
       onMouseLeave={onLeave}
     >
-      <div ref={tiltRef} style={{ transition: "transform 0.15s ease-out, box-shadow 0.3s ease", willChange: "transform" }}
-        className="glass-card overflow-hidden flex flex-col group relative h-full">
+      <div ref={tiltRef}
+        className="overflow-hidden flex flex-col group relative h-full"
+        style={{
+          transition: "transform 0.15s ease-out, box-shadow 0.3s ease",
+          willChange: "transform",
+          background: "#0A1628",
+          backdropFilter: "blur(20px) saturate(140%)",
+          border: "1px solid rgba(34,211,238,0.15)",
+          borderRadius: "16px",
+          boxShadow: `0 12px 40px rgba(0,0,0,0.45), 0 0 0 1px ${a.hex}15`,
+        }}
+      >
         <div className="absolute top-0 inset-x-0 h-[2px] z-30 pointer-events-none"
           style={{ background: `linear-gradient(90deg, transparent, ${a.hex} 30%, ${a.hex} 70%, transparent)`, boxShadow: `0 0 10px ${a.glow}`, opacity: 0.65 }} />
         <div ref={glowRef} className="absolute inset-0 rounded-xl pointer-events-none z-10" style={{ opacity: 0, transition: "opacity 0.3s" }} />
         <div className="relative h-52 overflow-hidden bg-[#0a1628] shrink-0">
           <Image src={project.image} alt={project.title} fill className="object-cover group-hover:scale-[1.06] transition-transform duration-500 ease-out" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050d1a]/90 via-[#050d1a]/20 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/60 via-[#0A1628]/10 to-transparent" />
         </div>
         <div className="p-5 flex flex-col flex-1 relative z-20">
           <h3 className="text-[15px] font-bold text-white mb-2 leading-snug">{project.title}</h3>
-          <p className="text-slate-300 text-sm leading-relaxed mb-4 flex-1">{project.description}</p>
+          <p className="text-[#94A3B8] text-sm leading-relaxed mb-4 flex-1">{project.description}</p>
           <div className="flex flex-wrap gap-1.5 mb-4">
             {project.technologies.map((tech) => (
               <span key={tech} className="px-2 py-0.5 text-[11px] font-medium rounded cursor-default"
-                style={{ color: `${a.hex}cc`, background: `${a.hex}10`, border: `1px solid ${a.hex}28` }}>{tech}</span>
+                style={{ color: "#E6FBFF", background: "linear-gradient(180deg, rgba(34,211,238,0.14), rgba(34,211,238,0.08))", border: "1px solid rgba(34,211,238,0.25)" }}>{tech}</span>
             ))}
           </div>
-          <div className="flex items-center gap-3 pt-3 border-t border-white/[0.06]">
+          <div className="flex items-center gap-3 pt-3 border-t border-[#1E293B]">
             {project.githubLink && (
               <a href={project.githubLink} target="_blank" rel="noopener noreferrer"
-                className="flex items-center gap-1.5 text-sm text-slate-400 hover:text-white transition-colors">
+                className="flex items-center gap-1.5 text-sm text-[#94A3B8] hover:text-white transition-colors">
                 <FaGithub size={14} /> GitHub
               </a>
             )}
             {project.demoLink && (
               <a href={project.demoLink} target="_blank" rel="noopener noreferrer"
                 className="ml-auto flex items-center gap-1.5 text-sm font-semibold transition-colors"
-                style={{ color: "#06B6D4" }}
+                style={{ color: "#22D3EE" }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#06B6D4")}>
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#22D3EE")}>
                 Visit <FaExternalLinkAlt size={10} />
               </a>
             )}
             {!project.githubLink && !project.demoLink && (
-              <a href="#contact" className="text-sm font-medium" style={{ color: a.hex }}>Contact for Details</a>
+              <a href="#contact" className="text-sm font-medium" style={{ color: "#22D3EE" }}>Contact for Details</a>
             )}
           </div>
         </div>
@@ -431,11 +440,13 @@ export default function Projects() {
   const ctaRef     = useRef<HTMLDivElement>(null);
   const trackRef   = useRef<HTMLDivElement>(null);
   const pinRef     = useRef<HTMLDivElement>(null);
+  const scrollTriggerRef = useRef<ScrollTrigger | null>(null);
 
   const filtered = activeFilter === "all"
     ? projects
     : projects.filter((p) => p.categories.includes(activeFilter));
 
+  // activeAccent previously computed here but not used; keep logic available if needed in future
   const wideId = activeFilter === "all" ? filtered.find((p) => p.featured)?.id : undefined;
 
   // Filter buttons + mobile CTA (mount only)
@@ -458,6 +469,12 @@ export default function Projects() {
 
   // Stacking animation — rebuilds on filter change
   useEffect(() => {
+    // Kill previous ScrollTrigger
+    if (scrollTriggerRef.current) {
+      scrollTriggerRef.current.kill();
+      scrollTriggerRef.current = null;
+    }
+
     const ctx = gsap.context(() => {
       const mm = gsap.matchMedia();
 
@@ -488,9 +505,9 @@ export default function Projects() {
             const titleEl = item.querySelector<HTMLElement>(".pni-title");
             const dotEl   = item.querySelector<HTMLElement>(".pni-dot");
             const isActive = i === idx;
-            if (numEl)   gsap.set(numEl,   { color: isActive ? accents[i]?.hex ?? "#06B6D4" : "rgba(100,116,139,0.4)" });
-            if (titleEl) gsap.set(titleEl, { color: isActive ? "rgba(255,255,255,0.88)" : "rgba(100,116,139,0.5)", fontWeight: isActive ? "600" : "400" });
-            if (dotEl)   gsap.set(dotEl,   { opacity: isActive ? 1 : 0, background: accents[i]?.hex ?? "#06B6D4" });
+            if (numEl)   gsap.set(numEl,   { color: isActive ? accents[i]?.hex ?? "#22D3EE" : "rgba(148,163,184,0.75)" });
+            if (titleEl) gsap.set(titleEl, { color: isActive ? "rgba(255,255,255,0.92)" : "rgba(148,163,184,0.78)", fontWeight: isActive ? "600" : "400" });
+            if (dotEl)   gsap.set(dotEl,   { opacity: isActive ? 1 : 0, background: accents[i]?.hex ?? "#22D3EE" });
           });
         };
         setNavActive(0);
@@ -518,20 +535,26 @@ export default function Projects() {
           }
         });
 
-        ScrollTrigger.create({
+        // Add extra pause at the end for last card
+        tl.to({}, { duration: 0.5 }, n - 1);
+
+        scrollTriggerRef.current = ScrollTrigger.create({
           trigger: pin,
           pin: true,
           start: "top 20%",
-          end: `+=${(n - 1) * 620}`,
-          scrub: 1.5,
+          end: `+=${n * 620}`,
+          scrub: 1.2,
           animation: tl,
-          invalidateOnRefresh: true,
+          invalidateOnRefresh: false,
+          fastScrollEnd: true,
+          preventOverlaps: true,
           onUpdate: (self) => {
             // Progress bar
             if (progressEl) gsap.set(progressEl, { width: `${self.progress * 100}%` });
 
-            // Nav active state
-            const currentIdx = Math.min(n - 1, Math.floor(self.progress * n + 0.02));
+            // Nav active state — normalize progress to exclude end padding
+            const normalizedProgress = Math.min(1, self.progress / 0.95);
+            const currentIdx = Math.min(n - 1, Math.floor(normalizedProgress * n));
             setNavActive(currentIdx);
 
             // CTA
@@ -545,8 +568,15 @@ export default function Projects() {
         });
       });
     }, sectionRef);
-    return () => ctx.revert();
-  }, [activeFilter]);  // eslint-disable-line react-hooks/exhaustive-deps
+
+    return () => {
+      if (scrollTriggerRef.current) {
+        scrollTriggerRef.current.kill();
+        scrollTriggerRef.current = null;
+      }
+      ctx.revert();
+    };
+  }, [filtered.length]);  // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <section ref={sectionRef} id="projects" className="section-padding">
@@ -562,19 +592,31 @@ export default function Projects() {
           style={{ opacity: 0 }}
           className="flex flex-wrap justify-center gap-2 mb-10"
         >
-          {categoryFilters.map((f) => (
-            <button
-              key={f.id}
-              onClick={() => setActiveFilter(f.id)}
-              className={`px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 border ${
-                activeFilter === f.id
-                  ? "bg-laravel text-white border-laravel shadow-[0_0_18px_rgba(6,182,212,0.4)]"
-                  : "text-slate-400 border-white/[0.07] bg-white/[0.03] hover:text-white hover:border-white/15 hover:bg-white/[0.06]"
-              }`}
-            >
-              {f.label}
-            </button>
-          ))}
+          {categoryFilters.map((f) => {
+            const isActive = activeFilter === f.id;
+            return (
+              <button
+                key={f.id}
+                onClick={() => setActiveFilter(f.id)}
+                className={`px-4 py-2 text-sm font-semibold rounded-lg transition-all duration-200 border ${
+                  isActive
+                    ? "text-white"
+                    : "text-[#94A3B8] border-white/[0.07] bg-white/[0.03] hover:text-white hover:border-white/15 hover:bg-white/[0.06]"
+                }`}
+                style={
+                  isActive
+                    ? {
+                        backgroundColor: "#22D3EE",
+                        borderColor: "#22D3EE",
+                        boxShadow: "0 0 18px rgba(34,211,238,0.45)",
+                      }
+                    : undefined
+                }
+              >
+                {f.label}
+              </button>
+            );
+          })}
         </div>
       </div>
 
@@ -587,7 +629,7 @@ export default function Projects() {
 
             {/* ── Left: project navigator ── */}
             <div className="w-[152px] xl:w-[168px] shrink-0 select-none">
-              <p className="text-[9px] font-bold tracking-[0.28em] uppercase text-slate-600 mb-4 pl-1">
+              <p className="text-[9px] font-bold tracking-[0.28em] uppercase text-[#475569] mb-4 pl-1">
                 All Projects
               </p>
 
@@ -611,7 +653,7 @@ export default function Projects() {
                     {/* Number */}
                     <span
                       className="pni-num font-mono text-[10.5px] font-bold mt-[1px] shrink-0 transition-colors duration-300"
-                      style={{ color: "rgba(100,116,139,0.4)" }}
+                      style={{ color: "rgba(148,163,184,0.65)" }}
                     >
                       {String(i + 1).padStart(2, "0")}
                     </span>
@@ -620,7 +662,7 @@ export default function Projects() {
                     <span
                       className="pni-title text-[12px] leading-[1.35] transition-all duration-300 line-clamp-2"
                       style={{
-                        color: "rgba(100,116,139,0.5)",
+                        color: "rgba(148,163,184,0.72)",
                         fontWeight: "400",
                       }}
                     >
@@ -631,10 +673,10 @@ export default function Projects() {
               </div>
 
               {/* Thin divider */}
-              <div className="h-px bg-white/[0.05] my-4 mx-1" />
+              <div className="h-px bg-[#1E293B] my-4 mx-1" />
 
               {/* Progress fraction */}
-              <p className="stack-progress-label text-[10px] font-mono text-slate-600 pl-1">
+              <p className="stack-progress-label text-[10px] font-mono text-[#475569] pl-1">
                 01 / {String(filtered.length).padStart(2, "0")}
               </p>
             </div>
@@ -643,7 +685,6 @@ export default function Projects() {
             <div className="flex-1 min-w-0">
               {/* Card stack */}
               <div
-                key={activeFilter}
                 ref={trackRef}
                 className="relative overflow-hidden group"
                 style={{ height: "500px", borderRadius: "18px" }}
@@ -666,22 +707,22 @@ export default function Projects() {
               {/* Progress bar */}
               <div
                 className="mt-4 rounded-full overflow-hidden"
-                style={{ height: "2px", background: "rgba(255,255,255,0.05)" }}
+                style={{ height: "2px", background: "#1E293B" }}
               >
                 <div
                   className="stack-progress-fill h-full rounded-full"
                   style={{
                     width: "0%",
                     background:
-                      "linear-gradient(to right, #06B6D4, #8B5CF6)",
-                    boxShadow: "0 0 8px rgba(6,182,212,0.5)",
+                      "linear-gradient(to right, #22D3EE, #A78BFA)",
+                    boxShadow: "0 0 8px rgba(34,211,238,0.5)",
                     transition: "width 0.05s linear",
                   }}
                 />
               </div>
 
               {/* Scroll hint */}
-              <p className="mt-2.5 text-[10px] font-medium tracking-[0.18em] uppercase text-slate-600 text-right">
+              <p className="mt-2.5 text-[10px] font-medium tracking-[0.18em] uppercase text-[#475569] text-right">
                 Scroll to explore
               </p>
             </div>
@@ -703,7 +744,7 @@ export default function Projects() {
             onMouseLeave={(e) =>
               gsap.to(e.currentTarget, { y: 0, duration: 0.25 })
             }
-            className="inline-flex items-center gap-2.5 px-7 py-3.5 text-sm font-medium text-slate-300 border border-white/[0.08] rounded-xl bg-white/[0.03] hover:bg-white/[0.07] hover:text-white hover:border-white/15 transition-all duration-300"
+            className="inline-flex items-center gap-2.5 px-7 py-3.5 text-sm font-medium text-[#94A3B8] border border-white/[0.08] rounded-xl bg-white/[0.03] hover:bg-white/[0.07] hover:text-white hover:border-white/15 transition-all duration-300"
           >
             <FaGithub size={17} />
             See more on GitHub
@@ -741,7 +782,7 @@ export default function Projects() {
             href="https://github.com/AhmedHassan1241"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2.5 px-7 py-3.5 text-sm font-medium text-slate-300 border border-white/[0.08] rounded-xl bg-white/[0.03] hover:bg-white/[0.07] hover:text-white hover:border-white/15 transition-all duration-300"
+            className="inline-flex items-center gap-2.5 px-7 py-3.5 text-sm font-medium text-[#94A3B8] border border-white/[0.08] rounded-xl bg-white/[0.03] hover:bg-white/[0.07] hover:text-white hover:border-white/15 transition-all duration-300"
           >
             <FaGithub size={17} />
             See more on GitHub

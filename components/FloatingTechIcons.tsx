@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import {
   SiPhp, SiLaravel, SiMysql, SiNodedotjs, SiMongodb,
   SiReact, SiJavascript, SiTypescript, SiGit, SiLinux,
-  SiExpress, SiHtml5, SiCss, SiGithub, SiCpanel,
+  SiExpress, SiHtml5, SiGithub,
 } from "react-icons/si";
 import { FaNetworkWired } from "react-icons/fa6";
 import { TbServerBolt } from "react-icons/tb";
