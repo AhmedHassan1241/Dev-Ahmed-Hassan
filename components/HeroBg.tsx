@@ -59,8 +59,8 @@ export default function HeroBg() {
     resize();
     window.addEventListener("resize", resize);
 
-    const COUNT = 58;
-    const LINK  = 125;
+    const COUNT = 28;      // was 42 — O(n²) pairs: 378 vs 861
+    const LINK2 = 120 * 120;
 
     const particles: Particle[] = Array.from({ length: COUNT }, () => ({
       x:       Math.random() * canvas.width,
@@ -72,10 +72,18 @@ export default function HeroBg() {
       cyan:    Math.random() > 0.45,
     }));
 
+    // Pause ticker when hero is off-screen
+    let active = true;
+    const observer = new IntersectionObserver(
+      ([entry]) => { active = entry.isIntersecting; },
+      { threshold: 0 },
+    );
+    observer.observe(canvas);
+
     const tick = gsap.ticker.add(() => {
+      if (!active) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Move & draw dots
       for (const p of particles) {
         p.x += p.vx;
         p.y += p.vy;
@@ -90,27 +98,20 @@ export default function HeroBg() {
         ctx.fill();
       }
 
-      // Draw connection lines
+      // Quadratic falloff — no Math.sqrt in the inner loop
+      ctx.lineWidth = 0.75;
       for (let i = 0; i < particles.length; i++) {
         for (let j = i + 1; j < particles.length; j++) {
-          const dx   = particles[i].x - particles[j].x;
-          const dy   = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist > LINK) continue;
+          const dx    = particles[i].x - particles[j].x;
+          const dy    = particles[i].y - particles[j].y;
+          const dist2 = dx * dx + dy * dy;
+          if (dist2 > LINK2) continue;
 
-          const alpha = (1 - dist / LINK) * 0.20;
-          // gradient line: cyan→purple
-          const grad = ctx.createLinearGradient(
-            particles[i].x, particles[i].y,
-            particles[j].x, particles[j].y,
-          );
-          grad.addColorStop(0, `rgba(6,182,212,${alpha})`);
-          grad.addColorStop(1, `rgba(139,92,246,${alpha})`);
+          const alpha = (1 - dist2 / LINK2) * 0.20;
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = grad;
-          ctx.lineWidth   = 0.75;
+          ctx.strokeStyle = `rgba(80,162,230,${alpha})`;
           ctx.stroke();
         }
       }
@@ -119,6 +120,7 @@ export default function HeroBg() {
     return () => {
       gsap.ticker.remove(tick);
       window.removeEventListener("resize", resize);
+      observer.disconnect();
     };
   }, []);
 

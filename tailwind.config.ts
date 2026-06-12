@@ -12,6 +12,16 @@ const config: Config = {
         laravel: "#06B6D4",
         php: "#8B5CF6",
         violet: "#7C3AED",
+        // Brighter slate for glassmorphism readability
+        slate: {
+          300: "#d4dde8",
+          400: "#b2c2d4",
+          500: "#8aaac2",
+          600: "#5e7d99",
+          700: "#3d5a72",
+          800: "#1e3448",
+          900: "#0f1f2e",
+        },
       },
       animation: {
         "pulse-slow": "pulse 3s ease-in-out infinite",

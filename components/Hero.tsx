@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, useEffect } from "react";
+import { useRef, useEffect } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -14,31 +14,7 @@ import {
 } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 
-const ROLES = [
-  "Mid-Level Back-End Developer",
-  "Laravel Specialist",
-  "API Architect",
-];
-
-function useTyping(words: string[], speed = 70, del = 45, pause = 2000) {
-  const [text, setText] = useState("");
-  const [wordIdx, setWordIdx] = useState(0);
-  const [deleting, setDeleting] = useState(false);
-  useEffect(() => {
-    const current = words[wordIdx];
-    const id = setTimeout(() => {
-      if (!deleting) {
-        if (text.length < current.length) setText(current.slice(0, text.length + 1));
-        else setTimeout(() => setDeleting(true), pause);
-      } else {
-        if (text.length > 0) setText(text.slice(0, -1));
-        else { setDeleting(false); setWordIdx((i) => (i + 1) % words.length); }
-      }
-    }, deleting ? del : speed);
-    return () => clearTimeout(id);
-  }, [text, deleting, wordIdx, words, speed, del, pause]);
-  return text;
-}
+const ROLE = "Mid-Level Back-End Developer";
 
 const socials = [
   { href: "https://github.com/AhmedHassan1241",                      icon: FaGithub,   label: "GitHub"    },
@@ -63,7 +39,6 @@ export default function Hero() {
   const ring1Ref    = useRef<HTMLDivElement>(null);
   const ring2Ref    = useRef<HTMLDivElement>(null);
 
-  const typedRole = useTyping(ROLES);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -247,9 +222,8 @@ export default function Hero() {
 
             {/* Typing role */}
             <div ref={roleRef} style={{ opacity: 0 }} className="flex flex-wrap items-center gap-3 mb-6 min-h-[2.5rem]">
-              <span className="text-xl sm:text-2xl text-slate-300 font-semibold">
-                {typedRole}
-                <span className="animate-pulse text-laravel font-thin">|</span>
+              <span className="text-xl sm:text-2xl text-slate-200 font-semibold">
+                {ROLE}
               </span>
             </div>
 
@@ -274,14 +248,14 @@ export default function Hero() {
             <p
               ref={descRef}
               style={{ opacity: 0 }}
-              className="text-slate-400 text-base leading-relaxed mb-8 max-w-md"
+              className="text-slate-300 text-base leading-relaxed mb-8 max-w-md"
             >
               Back-End Developer specialized in{" "}
-              <span className="text-slate-300 font-medium">PHP, Laravel, and MySQL</span>
+              <span className="text-white font-semibold">PHP, Laravel, and MySQL</span>
               , with hands-on experience building scalable APIs and real-time applications.
-              Completed the DEPI Program, gaining strong full-stack skills with React, Node.js,
+              Completed the DEPI Program, gaining full-stack skills with React, Node.js,
               Express.js, and MongoDB. Proven ability to debug production issues, optimize
-              queries, and deliver reliable solutions in both team and remote settings.
+              queries, and deliver reliable solutions in team and remote settings.
             </p>
 
             {/* Buttons */}
@@ -324,8 +298,8 @@ export default function Hero() {
                 { value: "3", label: "Companies",  color: "text-sky-400"  },
               ].map(({ value, label, color }) => (
                 <div key={label} className="glass-card p-3 text-center">
-                  <div className={`text-lg font-extrabold ${color}`}>{value}</div>
-                  <div className="text-slate-500 text-[11px] mt-0.5 leading-tight">{label}</div>
+                  <div className={`text-xl font-extrabold ${color}`}>{value}</div>
+                  <div className="text-slate-400 text-[11px] mt-0.5 leading-tight font-medium tracking-wide">{label}</div>
                 </div>
               ))}
             </div>
@@ -395,7 +369,7 @@ export default function Hero() {
                   className="glass-card p-3 text-center hover:border-white/15 transition-all duration-300 cursor-default"
                 >
                   <div className={`text-lg font-extrabold ${color}`}>{value}</div>
-                  <div className="text-slate-500 text-[11px] mt-0.5 leading-tight">{label}</div>
+                  <div className="text-slate-400 text-[11px] mt-0.5 leading-tight">{label}</div>
                 </div>
               ))}
             </div>

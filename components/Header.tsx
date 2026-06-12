@@ -19,16 +19,23 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState("about");
 
   useEffect(() => {
+    let rafPending = false;
     const onScroll = () => {
-      setScrolled(window.scrollY > 50);
-      const sections = navLinks.map((l) => l.href.slice(1));
-      for (const id of [...sections].reverse()) {
-        const el = document.getElementById(id);
-        if (el && window.scrollY + 120 >= el.offsetTop) {
-          setActiveSection(id);
-          break;
+      if (rafPending) return;
+      rafPending = true;
+      requestAnimationFrame(() => {
+        rafPending = false;
+        const y = window.scrollY;
+        setScrolled(y > 50);
+        const sections = navLinks.map((l) => l.href.slice(1));
+        for (const id of [...sections].reverse()) {
+          const el = document.getElementById(id);
+          if (el && y + 120 >= el.offsetTop) {
+            setActiveSection(id);
+            break;
+          }
         }
-      }
+      });
     };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -39,22 +46,52 @@ export default function Header() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-[#050d1a]/95 backdrop-blur-md border-b border-white/[0.06] shadow-xl shadow-black/30"
-          : "bg-[#050d1a]/60 backdrop-blur-md border-b border-white/[0.04]"
+          ? "border-b border-white/[0.12] shadow-[0_8px_32px_rgba(0,0,0,0.40),inset_0_-1px_0_rgba(255,255,255,0.06)]"
+          : "border-b border-white/[0.06]"
       }`}
+      style={{
+        background: scrolled
+          ? "rgba(3,11,24,0.55)"
+          : "rgba(3,11,24,0.25)",
+        backdropFilter:         "blur(28px) saturate(180%)",
+        WebkitBackdropFilter:   "blur(28px) saturate(180%)",
+      }}
     >
       <div className="section-container">
         <nav className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <a href="#about" className="flex items-center gap-3 group">
-            <div className="w-9 h-9 rounded-lg flex items-center justify-center text-white font-bold text-sm group-hover:scale-110 transition-transform shadow-[0_0_20px_rgba(6,182,212,0.5),0_0_40px_rgba(124,58,237,0.2)]" style={{background:"linear-gradient(135deg,#06B6D4,#7C3AED)"}}>
-              AH
+            {/* Circular monogram with gradient ring */}
+            <div className="relative w-10 h-10 flex-shrink-0 group-hover:scale-105 transition-transform duration-300">
+              <div
+                className="absolute inset-0 rounded-full"
+                style={{ background: "linear-gradient(135deg,#06B6D4,#7C3AED)", padding: "1.5px" }}
+              >
+                <div className="w-full h-full rounded-full bg-[#030b18] flex items-center justify-center">
+                  <span
+                    className="text-xs font-extrabold tracking-widest"
+                    style={{
+                      background: "linear-gradient(135deg,#06B6D4,#a78bfa)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    AH
+                  </span>
+                </div>
+              </div>
+              {/* Outer glow ring */}
+              <div className="absolute inset-[-3px] rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ background: "linear-gradient(135deg,rgba(6,182,212,0.25),rgba(124,58,237,0.25))", filter: "blur(6px)" }}
+              />
             </div>
-            <span className="font-semibold text-slate-200 hidden sm:block text-sm tracking-wide">
-              Ahmed Hassan
-            </span>
+            {/* Name + title */}
+            <div className="hidden sm:flex flex-col leading-tight">
+              <span className="text-sm font-bold text-white tracking-wide">Ahmed Hassan</span>
+              <span className="text-[10px] font-semibold tracking-[0.18em] uppercase text-laravel/80">Back-End Dev</span>
+            </div>
           </a>
 
           {/* Desktop Nav */}

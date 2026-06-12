@@ -1,14 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
+import gsap from "gsap";
 import {
-  FaEnvelope,
-  FaGithub,
-  FaLinkedin,
-  FaWhatsapp,
-  FaPaperPlane,
-  FaCheckCircle,
+  FaEnvelope, FaGithub, FaLinkedin, FaWhatsapp,
+  FaPaperPlane, FaCheckCircle,
 } from "react-icons/fa";
 import SectionHeading from "./SectionHeading";
 
@@ -17,35 +14,27 @@ const TEMPLATE_ID = "template_myg9mil";
 const PUBLIC_KEY  = "XsyHclKlGqXIlGDvV";
 
 const contactLinks = [
-  {
-    icon: FaEnvelope,
-    label: "Email",
-    value: "ahmed.hassan.1241999@gmail.com",
-    href: "mailto:ahmed.hassan.1241999@gmail.com",
-  },
-  {
-    icon: FaGithub,
-    label: "GitHub",
-    value: "github.com/AhmedHassan1241",
-    href: "https://github.com/AhmedHassan1241",
-  },
-  {
-    icon: FaLinkedin,
-    label: "LinkedIn",
-    value: "Ahmed Hassan",
-    href: "https://www.linkedin.com/in/ahmed-hassan-622364108/",
-  },
-  {
-    icon: FaWhatsapp,
-    label: "WhatsApp",
-    value: "+20 109 260 9197",
-    href: "tel:+201092609197",
-  },
+  { icon: FaEnvelope,  label: "Email",    value: "ahmed.hassan.1241999@gmail.com", href: "mailto:ahmed.hassan.1241999@gmail.com"               },
+  { icon: FaGithub,    label: "GitHub",   value: "github.com/AhmedHassan1241",      href: "https://github.com/AhmedHassan1241"                 },
+  { icon: FaLinkedin,  label: "LinkedIn", value: "Ahmed Hassan",                    href: "https://www.linkedin.com/in/ahmed-hassan-622364108/" },
+  { icon: FaWhatsapp,  label: "WhatsApp", value: "+20 109 260 9197",                href: "tel:+201092609197"                                   },
 ];
 
+const vp = { once: true, margin: "-60px" };
+
 export default function Contact() {
-  const [form, setForm]       = useState({ name: "", email: "", message: "" });
-  const [status, setStatus]   = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [form, setForm]     = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const linksRef = useRef<HTMLDivElement>(null);
+
+  // Magnetic hover on contact links
+  useEffect(() => {
+    const linkEls = linksRef.current?.querySelectorAll<HTMLElement>(".contact-link");
+    linkEls?.forEach((el) => {
+      el.addEventListener("mouseenter", () => gsap.to(el, { x: 6, duration: 0.25, ease: "power2.out" }));
+      el.addEventListener("mouseleave", () => gsap.to(el, { x: 0, duration: 0.35, ease: "power2.out" }));
+    });
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -53,36 +42,24 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
-
     try {
       const res = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
-        method: "POST",
+        method:  "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           service_id:      SERVICE_ID,
           template_id:     TEMPLATE_ID,
           user_id:         PUBLIC_KEY,
-          template_params: {
-            name:    form.name,
-            email:   form.email,
-            message: form.message,
-          },
+          template_params: { name: form.name, email: form.email, message: form.message },
         }),
       });
-
-      if (res.ok) {
-        setStatus("sent");
-        setForm({ name: "", email: "", message: "" });
-      } else {
-        setStatus("error");
-      }
-    } catch {
-      setStatus("error");
-    }
+      if (res.ok) { setStatus("sent"); setForm({ name: "", email: "", message: "" }); }
+      else setStatus("error");
+    } catch { setStatus("error"); }
   };
 
   return (
-    <section id="contact" className="section-padding">
+    <section id="contact" className="section-padding glass-section">
       <div className="section-container">
         <SectionHeading
           label="Get In Touch"
@@ -91,57 +68,60 @@ export default function Contact() {
         />
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 max-w-5xl mx-auto">
-          {/* Left: Contact info */}
+
+          {/* ── Left: info ── */}
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55 }}
             className="lg:col-span-2 flex flex-col gap-4"
+            initial={{ x: -48, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={vp}
+            transition={{ duration: 0.65, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <div className="glass-card p-6 relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-laravel/5 to-transparent pointer-events-none" />
               <div className="relative">
-                <h3 className="text-lg font-bold text-white mb-2">
-                  Let&apos;s Work Together
-                </h3>
-                <p className="text-slate-400 text-sm leading-relaxed">
-                  I&apos;m currently looking for back-end PHP / Laravel roles. If you have
-                  an opportunity or want to collaborate, feel free to reach out!
+                <h3 className="text-lg font-bold text-white mb-2">Let&apos;s Work Together</h3>
+                <p className="text-slate-300 text-sm leading-relaxed">
+                  I&apos;m currently looking for back-end PHP / Laravel roles. If you have an
+                  opportunity or want to collaborate, feel free to reach out!
                 </p>
               </div>
             </div>
 
-            {contactLinks.map(({ icon: Icon, label, value, href }) => (
-              <motion.a
-                key={label}
-                href={href}
-                target={href.startsWith("http") ? "_blank" : undefined}
-                rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                whileHover={{ x: 4 }}
-                transition={{ duration: 0.2 }}
-                className="glass-card p-4 flex items-center gap-4 hover:border-white/15 transition-all duration-300 group"
-              >
-                <div className="w-10 h-10 rounded-lg bg-laravel/15 border border-laravel/25 flex items-center justify-center flex-shrink-0 group-hover:bg-laravel/25 transition-colors">
-                  <Icon className="text-laravel" size={16} />
-                </div>
-                <div className="min-w-0">
-                  <p className="text-xs text-slate-500 mb-0.5">{label}</p>
-                  <p className="text-slate-300 text-sm font-medium truncate group-hover:text-white transition-colors">
-                    {value}
-                  </p>
-                </div>
-              </motion.a>
-            ))}
+            <div ref={linksRef} className="flex flex-col gap-3">
+              {contactLinks.map(({ icon: Icon, label, value, href }, i) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="contact-link glass-card p-4 flex items-center gap-4 hover:border-white/15 transition-all duration-300 group"
+                  initial={{ x: -32, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  viewport={vp}
+                  transition={{ duration: 0.45, delay: i * 0.08, ease: "easeOut" }}
+                >
+                  <div className="w-10 h-10 rounded-lg bg-laravel/15 border border-laravel/25 flex items-center justify-center flex-shrink-0 group-hover:bg-laravel/25 transition-colors">
+                    <Icon className="text-laravel" size={16} />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-xs text-slate-400 mb-0.5">{label}</p>
+                    <p className="text-slate-300 text-sm font-medium truncate group-hover:text-white transition-colors">
+                      {value}
+                    </p>
+                  </div>
+                </motion.a>
+              ))}
+            </div>
           </motion.div>
 
-          {/* Right: Form */}
+          {/* ── Right: form ── */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.55, delay: 0.1 }}
             className="lg:col-span-3"
+            initial={{ x: 48, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            viewport={vp}
+            transition={{ duration: 0.65, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
             <div className="glass-card p-7">
               {status === "sent" ? (
@@ -162,59 +142,46 @@ export default function Contact() {
                     </p>
                   )}
 
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">
-                      Your Name
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      autoComplete="off"
-                      placeholder="Ahmed Hassan"
-                      value={form.name}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-white/[0.04] border border-white/[0.08] text-slate-100 placeholder-slate-600 text-sm focus:outline-none focus:border-laravel/50 focus:bg-white/[0.06] transition-all duration-200"
-                    />
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-slate-300 mb-2">
-                      Email Address
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      autoComplete="off"
-                      placeholder="you@example.com"
-                      value={form.email}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-white/[0.04] border border-white/[0.08] text-slate-100 placeholder-slate-600 text-sm focus:outline-none focus:border-laravel/50 focus:bg-white/[0.06] transition-all duration-200"
-                    />
-                  </div>
+                  {[
+                    { id: "name",  label: "Your Name",     type: "text",  placeholder: "Ahmed Hassan"    },
+                    { id: "email", label: "Email Address", type: "email", placeholder: "you@example.com" },
+                  ].map(({ id, label, type, placeholder }) => (
+                    <div key={id}>
+                      <label htmlFor={id} className="block text-sm font-medium text-slate-300 mb-2">
+                        {label}
+                      </label>
+                      <input
+                        type={type} id={id} name={id} required autoComplete="off"
+                        placeholder={placeholder}
+                        value={form[id as keyof typeof form]}
+                        onChange={handleChange}
+                        onFocus={(e) => gsap.to(e.currentTarget, { borderColor: "rgba(6,182,212,0.55)", duration: 0.25 })}
+                        onBlur={(e)  => gsap.to(e.currentTarget, { borderColor: "rgba(255,255,255,0.08)", duration: 0.35 })}
+                        className="w-full px-4 py-3 rounded-lg bg-white/[0.06] border border-white/[0.10] text-slate-100 placeholder-slate-500 text-sm focus:outline-none transition-all duration-200"
+                      />
+                    </div>
+                  ))}
 
                   <div>
                     <label htmlFor="message" className="block text-sm font-medium text-slate-300 mb-2">
                       Message
                     </label>
                     <textarea
-                      id="message"
-                      name="message"
-                      required
-                      rows={5}
+                      id="message" name="message" required rows={5}
                       placeholder="Tell me about the opportunity or project..."
                       value={form.message}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-lg bg-white/[0.04] border border-white/[0.08] text-slate-100 placeholder-slate-600 text-sm focus:outline-none focus:border-laravel/50 focus:bg-white/[0.06] transition-all duration-200 resize-none"
+                      onFocus={(e) => gsap.to(e.currentTarget, { borderColor: "rgba(6,182,212,0.55)", duration: 0.25 })}
+                      onBlur={(e)  => gsap.to(e.currentTarget, { borderColor: "rgba(255,255,255,0.08)", duration: 0.35 })}
+                      className="w-full px-4 py-3 rounded-lg bg-white/[0.06] border border-white/[0.10] text-slate-100 placeholder-slate-500 text-sm focus:outline-none transition-all duration-200 resize-none"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={status === "sending"}
+                    onMouseEnter={(e) => gsap.to(e.currentTarget, { scale: 1.02, duration: 0.2 })}
+                    onMouseLeave={(e) => gsap.to(e.currentTarget, { scale: 1.00, duration: 0.25 })}
                     className="w-full flex items-center justify-center gap-2 py-3.5 bg-laravel text-white font-semibold rounded-lg hover:bg-[#0891b2] disabled:opacity-60 disabled:cursor-not-allowed transition-all duration-300 hover:shadow-[0_0_20px_rgba(6,182,212,0.4)] text-sm"
                   >
                     {status === "sending" ? (
@@ -223,16 +190,14 @@ export default function Contact() {
                         Sending...
                       </>
                     ) : (
-                      <>
-                        <FaPaperPlane size={13} />
-                        Send Message
-                      </>
+                      <><FaPaperPlane size={13} /> Send Message</>
                     )}
                   </button>
                 </form>
               )}
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>

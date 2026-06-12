@@ -1,6 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaBriefcase, FaCalendarAlt, FaMapMarkerAlt } from "react-icons/fa";
 import SectionHeading from "./SectionHeading";
 
@@ -77,8 +79,97 @@ const experiences = [
 ];
 
 export default function Experience() {
+  const sectionRef  = useRef<HTMLDivElement>(null);
+  const lineRef     = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      // ── Timeline line grows with scroll (scrub) ──
+      gsap.set(lineRef.current, { scaleY: 0, transformOrigin: "top center" });
+      gsap.to(lineRef.current, {
+        scaleY: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 55%",
+          end:   "bottom 85%",
+          scrub: 0.6,
+        },
+      });
+
+      // ── Cards slide in from left (ScrollTrigger.batch) ──
+      ScrollTrigger.batch(".exp-card", {
+        onEnter: (els) =>
+          gsap.fromTo(
+            els,
+            { x: -48, opacity: 0 },
+            { x: 0, opacity: 1, stagger: 0.12, duration: 0.65, ease: "power3.out" },
+          ),
+        start: "top 88%",
+        once:  true,
+      });
+
+      // ── Dots pop in ──
+      ScrollTrigger.batch(".exp-dot", {
+        onEnter: (els) =>
+          gsap.fromTo(
+            els,
+            { scale: 0, opacity: 0 },
+            { scale: 1, opacity: 1, stagger: 0.12, duration: 0.45, ease: "back.out(2.5)" },
+          ),
+        start: "top 88%",
+        once:  true,
+      });
+
+      // ── Highlights slide in from right ──
+      document.querySelectorAll<HTMLElement>(".exp-highlights li").forEach((li) => {
+        gsap.fromTo(
+          li,
+          { x: 30, opacity: 0 },
+          {
+            x: 0, opacity: 1, duration: 0.48, ease: "power2.out",
+            scrollTrigger: { trigger: li, start: "top 92%", toggleActions: "play none none none" },
+          },
+        );
+      });
+
+      // ── Tags stagger inside each visible card ──
+      document.querySelectorAll<HTMLElement>(".exp-tags").forEach((tagGroup) => {
+        gsap.fromTo(
+          tagGroup.querySelectorAll("span"),
+          { opacity: 0, y: 10, scale: 0.85 },
+          {
+            opacity: 1, y: 0, scale: 1,
+            stagger: 0.06, duration: 0.35, ease: "back.out(1.5)",
+            scrollTrigger: {
+              trigger: tagGroup,
+              start: "top 90%",
+              toggleActions: "play none none none",
+            },
+          },
+        );
+      });
+
+      // ── Date/location badges slide from right ──
+      document.querySelectorAll<HTMLElement>(".exp-meta").forEach((el) => {
+        gsap.fromTo(
+          el,
+          { x: 24, opacity: 0 },
+          {
+            x: 0, opacity: 1, duration: 0.45, ease: "power2.out",
+            scrollTrigger: { trigger: el, start: "top 90%", toggleActions: "play none none none" },
+          },
+        );
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section id="experience" className="section-padding">
+    <section id="experience" className="section-padding glass-section">
       <div className="section-container">
         <SectionHeading
           label="Work History"
@@ -86,56 +177,56 @@ export default function Experience() {
           subtitle="From internship to building production systems at real companies."
         />
 
-        <div className="relative max-w-3xl mx-auto">
-          {/* Animated timeline line */}
-          <motion.div
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 1.4, ease: "easeOut" }}
-            style={{ transformOrigin: "top" }}
-            className="absolute left-5 top-0 bottom-0 w-px bg-gradient-to-b from-laravel via-laravel/30 to-transparent"
+        <div ref={sectionRef} className="relative max-w-3xl mx-auto">
+          {/* Scroll-scrubbed timeline line */}
+          <div
+            ref={lineRef}
+            className="absolute left-5 top-0 bottom-0 w-px"
+            style={{
+              background: "linear-gradient(to bottom, #06B6D4, rgba(6,182,212,0.25), transparent)",
+            }}
           />
 
           {experiences.map((exp, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.55, delay: i * 0.1, ease: "easeOut" }}
-              className="relative pl-14 pb-5"
-            >
-              {/* Glowing dot */}
-              <motion.div
-                initial={{ scale: 0 }}
-                whileInView={{ scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.1 + 0.2, ease: "backOut" }}
-                className="timeline-dot top-1.5"
+            <div key={i} className="relative pl-14 pb-5">
+              {/* Dot */}
+              <div
+                className="exp-dot timeline-dot top-1.5"
                 style={{
                   background: exp.color,
-                  boxShadow: `0 0 0 4px ${exp.color}20, 0 0 14px ${exp.color}60`,
+                  boxShadow:  `0 0 0 4px ${exp.color}20, 0 0 14px ${exp.color}60`,
+                  opacity: 0,
                 }}
               />
 
               {/* Card */}
-              <motion.div
-                whileHover={{ y: -3, boxShadow: `0 8px 30px rgba(0,0,0,0.3), 0 0 20px ${exp.color}15` }}
-                transition={{ duration: 0.25 }}
-                className={`glass-card p-6 transition-all duration-300 ${
+              <div
+                className={`exp-card glass-card p-6 transition-all duration-300 hover:-translate-y-1 ${
                   exp.current ? "border-white/[0.12]" : ""
                 }`}
+                style={{
+                  opacity: 0,
+                  // hover glow handled via CSS — GSAP won't interfere here
+                }}
+                onMouseEnter={(e) => {
+                  gsap.to(e.currentTarget, {
+                    boxShadow: `0 8px 30px rgba(0,0,0,0.3), 0 0 20px ${exp.color}18`,
+                    duration: 0.25,
+                  });
+                }}
+                onMouseLeave={(e) => {
+                  gsap.to(e.currentTarget, {
+                    boxShadow: "none",
+                    duration: 0.35,
+                  });
+                }}
               >
                 {/* Header */}
                 <div className="flex flex-wrap items-start justify-between gap-3 mb-4">
                   <div>
                     <div className="flex items-center gap-2 mb-1.5">
                       <FaBriefcase size={12} style={{ color: exp.color }} />
-                      <span
-                        className="text-xs font-bold tracking-widest uppercase"
-                        style={{ color: exp.color }}
-                      >
+                      <span className="text-xs font-bold tracking-widest uppercase" style={{ color: exp.color }}>
                         {exp.type}
                       </span>
                       {exp.current && (
@@ -146,9 +237,9 @@ export default function Experience() {
                       )}
                     </div>
                     <h3 className="text-lg font-bold text-white">{exp.role}</h3>
-                    <p className="text-slate-400 text-sm font-medium mt-0.5">{exp.company}</p>
+                    <p className="text-slate-300 text-sm font-semibold mt-0.5">{exp.company}</p>
                   </div>
-                  <div className="flex flex-col gap-1.5 items-end text-xs text-slate-500">
+                  <div className="exp-meta flex flex-col gap-1.5 items-end text-xs text-slate-400" style={{ opacity: 0 }}>
                     <div className="flex items-center gap-1.5">
                       <FaCalendarAlt size={10} />
                       <span>{exp.period}</span>
@@ -161,12 +252,9 @@ export default function Experience() {
                 </div>
 
                 {/* Highlights */}
-                <ul className="space-y-2 mb-5">
+                <ul className="exp-highlights space-y-2 mb-5">
                   {exp.highlights.map((h, j) => (
-                    <li
-                      key={j}
-                      className="flex items-start gap-2.5 text-slate-400 text-sm leading-relaxed"
-                    >
+                    <li key={j} className="flex items-start gap-2.5 text-slate-300 text-sm leading-relaxed">
                       <span
                         className="w-1.5 h-1.5 rounded-full flex-shrink-0 mt-[7px]"
                         style={{ background: exp.color, opacity: 0.7 }}
@@ -177,18 +265,18 @@ export default function Experience() {
                 </ul>
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2">
+                <div className="exp-tags flex flex-wrap gap-2">
                   {exp.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2.5 py-1 text-xs text-slate-400 bg-white/[0.04] border border-white/[0.07] rounded-md hover:border-white/15 transition-colors"
+                      className="px-2.5 py-1 text-xs text-slate-300 bg-white/[0.05] border border-white/[0.10] rounded-md hover:border-white/20 hover:text-white transition-colors"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
-              </motion.div>
-            </motion.div>
+              </div>
+            </div>
           ))}
         </div>
       </div>

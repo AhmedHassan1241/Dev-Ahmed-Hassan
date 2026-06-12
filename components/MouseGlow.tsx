@@ -18,9 +18,12 @@ export default function MouseGlow() {
     };
 
     const tick = () => {
-      cx += (tx - cx) * 0.07;
-      cy += (ty - cy) * 0.07;
-      if (ref.current) {
+      const dx = tx - cx;
+      const dy = ty - cy;
+      cx += dx * 0.07;
+      cy += dy * 0.07;
+      // Only write to DOM when movement is noticeable
+      if ((dx * dx + dy * dy) > 0.25 && ref.current) {
         ref.current.style.left = `${cx}px`;
         ref.current.style.top  = `${cy}px`;
       }
