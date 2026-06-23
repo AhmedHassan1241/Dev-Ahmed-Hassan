@@ -264,7 +264,7 @@ export default function Hero() {
                 View Projects <FaArrowRight size={13} />
               </a>
               <a
-                href="https://drive.google.com/file/d/1Iq6ZdKCPuZIKE9sSsDd0aEZFnOsIjkXj/view"
+                href="https://drive.google.com/file/d/1v4kN7kuaIHf8IKH2EmK8S1gaKHSdZB6X/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ opacity: 0 }}
