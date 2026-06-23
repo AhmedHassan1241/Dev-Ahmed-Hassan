@@ -58,7 +58,7 @@ export default function Footer() {
             </div>
             <div className="flex flex-col leading-tight">
               <span className="text-sm font-bold text-white tracking-wide">Ahmed Hassan</span>
-              <span className="text-[10px] font-semibold tracking-[0.18em] uppercase text-laravel/80">Back-End Dev</span>
+              <span className="text-[10px] font-semibold tracking-[0.18em] uppercase text-laravel/80">Mid-Level PHP/Laravel Backend Developer</span>
             </div>
           </motion.div>
 
@@ -73,7 +73,7 @@ export default function Footer() {
             <SiPhp className="text-php" size={16} />
             <span className="text-slate-400 text-xs">|</span>
             <SiLaravel className="text-laravel" size={14} />
-            <span className="text-slate-300 text-xs font-medium">Back-End Developer</span>
+            <span className="text-slate-300 text-xs font-medium">Mid-Level PHP/Laravel Backend Developer</span>
           </motion.div>
 
           {/* Social icons */}

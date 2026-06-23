@@ -14,7 +14,7 @@ import {
 } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 
-const ROLE = "Mid-Level Back-End Developer";
+const ROLE = "Mid-Level PHP/Laravel Backend Developer";
 
 const socials = [
   { href: "https://github.com/AhmedHassan1241",                      icon: FaGithub,   label: "GitHub"    },
@@ -250,12 +250,10 @@ export default function Hero() {
               style={{ opacity: 0 }}
               className="text-slate-300 text-base leading-relaxed mb-8 max-w-md"
             >
-              Back-End Developer specialized in{" "}
-              <span className="text-white font-semibold">PHP, Laravel, and MySQL</span>
-              , with hands-on experience building scalable APIs and real-time applications.
-              Completed the DEPI Program, gaining full-stack skills with React, Node.js,
-              Express.js, and MongoDB. Proven ability to debug production issues, optimize
-              queries, and deliver reliable solutions in team and remote settings.
+              PHP/Laravel Backend Developer with 2 years of experience building
+              scalable, production-ready systems. Specialized in RESTful API
+              development, real-time features using Laravel Reverb, and multi-tenant
+              SaaS architecture. Familiar with Clean Architecture and DDD concepts.
             </p>
 
             {/* Buttons */}

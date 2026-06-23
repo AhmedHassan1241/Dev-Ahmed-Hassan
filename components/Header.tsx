@@ -158,7 +158,7 @@ export default function Header() {
                 </a>
               ))}
               <a
-                href="/resume.pdf"
+                href="/Ahmed Hassan Resume.pdf"
                 download
                 className="mt-2 flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium text-white border border-laravel/50 rounded-lg hover:bg-laravel/10 transition-all duration-300"
               >
