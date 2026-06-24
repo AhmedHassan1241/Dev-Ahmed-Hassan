@@ -165,7 +165,7 @@ export default function HeroBg() {
   }, []);
 
   return (
-    <div className="absolute inset-0 pointer-events-none overflow-hidden" aria-hidden>
+    <div className="absolute inset-0 pointer-events-none hero-bg" aria-hidden>
 
       {/* Neural network canvas */}
       <canvas

@@ -172,9 +172,8 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="about"
-      className="relative min-h-screen flex items-center pt-20 pb-16 overflow-hidden"
+      className="relative min-h-screen flex items-center pt-20 pb-16 w-full"
     >
-      {/* ── CS-themed animated background ── */}
       <HeroBg />
 
       <div className="section-container w-full">
@@ -182,34 +181,34 @@ export default function Hero() {
 
           {/* ══ Left column ══ */}
           <div ref={leftColRef}>
-
-            {/* Mobile photo */}
-            <div className="block lg:hidden mb-7 text-center">
-              <div className="relative inline-block">
-                <div className="w-36 h-36 rounded-full overflow-hidden border-2 border-laravel/60 shadow-[0_0_35px_rgba(6,182,212,0.25)]">
-                  <Image
-                    src="/profile-modified.png"
-                    alt="Ahmed Hassan"
-                    width={144}
-                    height={144}
-                    className="object-cover w-full h-full"
-                    priority
-                  />
+            <div className="hero-text-panel">
+              {/* Mobile photo */}
+              <div className="block lg:hidden mb-7 text-center">
+                <div className="relative inline-block">
+                  <div className="w-36 h-36 rounded-full overflow-hidden border-2 border-laravel/60 shadow-[0_0_35px_rgba(6,182,212,0.25)]">
+                    <Image
+                      src="/profile-modified.png"
+                      alt="Ahmed Hassan"
+                      width={144}
+                      height={144}
+                      className="object-cover w-full h-full"
+                      priority
+                    />
+                  </div>
+                  <span className="absolute bottom-1.5 right-1.5 w-4 h-4 bg-green-400 rounded-full border-2 border-[#050d1a]" />
                 </div>
-                <span className="absolute bottom-1.5 right-1.5 w-4 h-4 bg-green-400 rounded-full border-2 border-[#050d1a]" />
               </div>
-            </div>
 
-            {/* Available badge */}
-            <div ref={badgeRef} style={{ opacity: 0 }} className="flex items-center gap-2 mb-5">
-              <span className="relative flex h-2.5 w-2.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-400" />
-              </span>
-              <span className="text-green-400 text-sm font-medium">
-                Available for opportunities
-              </span>
-            </div>
+              {/* Available badge */}
+              <div ref={badgeRef} style={{ opacity: 0 }} className="flex items-center gap-2 mb-5">
+                <span className="relative flex h-2.5 w-2.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-green-400" />
+                </span>
+                <span className="text-green-400 text-sm font-medium">
+                  Available for opportunities
+                </span>
+              </div>
 
             {/* Name */}
             <h1
@@ -263,7 +262,6 @@ export default function Hero() {
               </a>
               <a
                 href="https://drive.google.com/uc?export=download&id=1v4kN7kuaIHf8IKH2EmK8S1gaKHSdZB6X"
-                target="_blank"
                 rel="noopener noreferrer"
                 style={{ opacity: 0 }}
                 className="btn-ghost"
@@ -288,7 +286,7 @@ export default function Hero() {
                 </a>
               ))}
             </div>
-
+          </div>
             {/* Stats mobile */}
             <div className="grid grid-cols-2 gap-3 mt-8 lg:hidden">
               {[

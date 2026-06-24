@@ -38,9 +38,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth overflow-x-hidden">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
       <body
-        className={`${inter.variable} font-sans bg-[#050d1a] text-slate-100 antialiased`}
+        className={`${inter.variable} font-sans bg-[#050d1a] text-slate-100 antialiased overflow-x-hidden`}
       >
         {children}
       </body>

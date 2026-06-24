@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -53,8 +53,40 @@ body {
 
 /* ── Components ── */
 @layer components {
-  .section-container { @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8; }
+  .section-container { @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full; }
   .section-padding    { @apply py-20 md:py-28; }
+
+  .hero-bg {
+    overflow: visible;
+    width: 120%;
+    left: -10%;
+    transform: none;
+  }
+
+  .hero-text-panel {
+    border-radius: 1.75rem;
+    padding: 1rem;
+    background: transparent;
+    border: none;
+  }
+
+  @media (max-width: 768px) {
+    .hero-text-panel {
+      background: rgba(10, 28, 54, 0.32);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(56, 189, 248, 0.18);
+      box-shadow: inset 0 0 0 1px rgba(14, 74, 114, 0.08);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-bg {
+      width: 140%;
+      left: -20%;
+      transform: none;
+    }
+  }
 
   /* ════════════════════════════════════════════
      GLASSMORPHISM CARD
