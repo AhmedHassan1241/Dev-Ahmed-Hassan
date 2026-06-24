@@ -118,8 +118,9 @@ export default function Header() {
           {/* CTA + Mobile Toggle */}
           <div className="flex items-center gap-3">
             <a
-              href="/Ahmed Hassan Resume.pdf"
-              download
+              href="https://drive.google.com/uc?export=download&id=1v4kN7kuaIHf8IKH2EmK8S1gaKHSdZB6X"
+              target="_blank"
+              rel="noopener noreferrer"
               className="hidden md:flex items-center gap-2 px-4 py-2 text-sm font-medium text-white border border-[#06B6D4]/50 rounded-lg hover:border-[#06B6D4] hover:shadow-[0_0_16px_rgba(6,182,212,0.3)] transition-all duration-300" style={{background:"rgba(6,182,212,0.06)"}}
             >
               <FaDownload size={12} />
@@ -158,8 +159,9 @@ export default function Header() {
                 </a>
               ))}
               <a
-                href="/Ahmed Hassan Resume.pdf"
-                download
+                href="https://drive.google.com/uc?export=download&id=1v4kN7kuaIHf8IKH2EmK8S1gaKHSdZB6X"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="mt-2 flex items-center justify-center gap-2 px-4 py-3 text-sm font-medium text-white border border-laravel/50 rounded-lg hover:bg-laravel/10 transition-all duration-300"
               >
                 <FaDownload size={12} /> Download Resume

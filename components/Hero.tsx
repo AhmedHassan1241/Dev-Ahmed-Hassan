@@ -262,8 +262,9 @@ export default function Hero() {
                 View Projects <FaArrowRight size={13} />
               </a>
               <a
-                href="/Ahmed Hassan Resume.pdf"
-                download
+                href="https://drive.google.com/uc?export=download&id=1v4kN7kuaIHf8IKH2EmK8S1gaKHSdZB6X"
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{ opacity: 0 }}
                 className="btn-ghost"
               >
