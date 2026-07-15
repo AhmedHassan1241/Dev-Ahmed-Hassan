@@ -82,8 +82,8 @@ export default function Contact() {
               <div className="relative">
                 <h3 className="text-lg font-bold text-white mb-2">Let&apos;s Work Together</h3>
                 <p className="text-slate-300 text-sm leading-relaxed">
-                  I&apos;m currently looking for back-end PHP / Laravel roles. If you have an
-                  opportunity or want to collaborate, feel free to reach out!
+                  I&apos;m currently looking for backend PHP and Laravel opportunities. If you have a
+                  role in mind or would like to collaborate, feel free to reach out!
                 </p>
               </div>
             </div>
