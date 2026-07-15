@@ -14,7 +14,7 @@ import {
 } from "react-icons/fa";
 import { SiGmail } from "react-icons/si";
 
-const ROLE = "Mid-Level PHP/Laravel Backend Developer";
+const ROLE = "Mid-Level PHP Backend Developer";
 
 const socials = [
   { href: "https://github.com/AhmedHassan1241",                      icon: FaGithub,   label: "GitHub"    },
@@ -249,10 +249,7 @@ export default function Hero() {
               style={{ opacity: 0 }}
               className="text-slate-300 text-base leading-relaxed mb-8 max-w-md"
             >
-              PHP/Laravel Backend Developer with 2 years of experience building
-              scalable, production-ready systems. Specialized in RESTful API
-              development, real-time features using Laravel Reverb, and multi-tenant
-              SaaS architecture. Familiar with Clean Architecture and DDD concepts.
+              Backend Developer with 2 years of experience building <strong>scalable, production-ready systems</strong>, specialized in <strong>RESTful APIs</strong>, <strong>real-time architecture</strong>, and <strong>multi-tenant SaaS platforms</strong>. Comfortable across the stack including <strong>React-based frontends</strong>, and skilled in leveraging <strong>AI-assisted development</strong> to design and ship features faster. Track record of delivering reliable solutions on-site and remotely.
             </p>
 
             {/* Buttons */}

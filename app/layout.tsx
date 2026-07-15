@@ -10,9 +10,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Ahmed Hassan | Mid-Level PHP/Laravel Backend Developer",
+  title: "Ahmed Hassan | Mid-Level PHP Backend Developer",
   description:
-    "PHP/Laravel Backend Developer with 2 years experience building scalable, production-ready systems. Specialized in RESTful APIs, real-time features, and multi-tenant SaaS architecture.",
+    "Backend Developer with 2 years of experience building scalable, production-ready systems, specialized in RESTful APIs, real-time architecture, and multi-tenant SaaS platforms.",
   keywords: [
     "PHP developer",
     "Laravel developer",
@@ -24,9 +24,9 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Ahmed Hassan" }],
   openGraph: {
-    title: "Ahmed Hassan | Mid-Level PHP/Laravel Backend Developer",
+    title: "Ahmed Hassan | Mid-Level PHP Backend Developer",
     description:
-      "PHP/Laravel Backend Developer with 2 years experience building scalable, production-ready systems.",
+      "Backend Developer with 2 years of experience building scalable, production-ready systems, specialized in RESTful APIs, real-time architecture, and multi-tenant SaaS platforms.",
     type: "website",
     locale: "en_US",
   },
